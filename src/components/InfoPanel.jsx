@@ -15,7 +15,8 @@ const InfoPanel = ({
     <div className={`
       absolute z-20 w-full md:w-80 
       transition-all duration-300 ease-in-out
-      ${isSidebarOpen || window.innerWidth >= 768 ? 'top-20 opacity-100 translate-y-0' : '-top-full opacity-0 -translate-y-10 md:hidden'}
+      ${isSidebarOpen ? 'top-20 opacity-100 translate-y-0' : '-top-full opacity-0 -translate-y-10'}
+      md:top-20 md:opacity-100 md:translate-y-0
       left-0 md:left-28 px-4 md:px-0 py-4 md:py-0
     `}>
       <div className="bg-slate-900/95 md:bg-surface-container/70 backdrop-blur-[20px] rounded-xl p-6 shadow-2xl border border-outline-variant/30 max-h-[85vh] overflow-y-auto">

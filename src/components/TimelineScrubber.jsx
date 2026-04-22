@@ -14,7 +14,7 @@ const TimelineScrubber = ({
   return (
     <div className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20">
       <div className="absolute -top-6 left-0 w-full px-4 md:px-24">
-        <div className="relative w-full h-8 flex items-center cursor-pointer" onClick={(e) => {
+        <div className="relative w-full h-8 flex items-center cursor-pointer touch-none" onClick={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           const ratio = (e.clientX - rect.left) / rect.width;
           setCurrentTimeIndex(Math.floor(ratio * epochs.length));
