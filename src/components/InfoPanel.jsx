@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBeaufortLabel, getTyphoonIntensity, TYPHOON_NAME_MAP } from '../utils';
+import { getBeaufortLabel, getTyphoonIntensity, TYPHOON_NAME_MAP, isValidValue } from '../utils';
 
 const InfoPanel = ({ 
   data, 
