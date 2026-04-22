@@ -11,7 +11,8 @@ const InfoPanel = ({
   isSidebarOpen, 
   setIsSidebarOpen 
 }) => {
-  const intensity = getTyphoonIntensity(currentTyphoonPos?.wind || 0);
+  const windSpeed = Number(currentTyphoonPos?.wind || 0);
+  const intensity = getTyphoonIntensity(windSpeed);
 
   return (
     <div className={`
