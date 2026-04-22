@@ -191,37 +191,44 @@ function App() {
     );
   }
 
-  if (!data || !data.typhoon || !data.typhoon.track) return (
-    <div className="flex flex-col h-screen items-center justify-center bg-slate-950 text-white">
-      <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
-      <p className="text-cyan-500 font-bold tracking-widest animate-pulse">LOADING DATASET...</p>
-    </div>
-  );
+  if (!data || !data.typhoon || !data.typhoon.track) {
+    return (
+      <div className="flex flex-col h-screen items-center justify-center bg-slate-950 text-white">
+        <div className="flex flex-col items-center gap-6">
+          <div className="w-16 h-16 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin"></div>
+          <div className="text-center">
+            <h2 className="text-cyan-400 font-bold tracking-[0.2em] text-xl mb-2">INITIALIZING REPLAY SYSTEM</h2>
+            <p className="text-slate-500 text-sm animate-pulse">Loading meteorological datasets...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const hourlyData = data.hourlyData || {};
   const epochs = Object.keys(hourlyData).sort((a, b) => Number(a) - Number(b));
   const track = data.typhoon.track || [];
-  const currentEpoch = track[currentTimeIndex]?.epoch || (epochs.length > 0 ? epochs[currentTimeIndex] : null);
+  const currentEpoch = (track[currentTimeIndex] && track[currentTimeIndex].epoch) || (epochs.length > 0 ? epochs[currentTimeIndex] : null);
   const currentData = currentEpoch ? (hourlyData[currentEpoch] || {}) : {};
   const currentTyphoonPos = track[currentTimeIndex] || track[0] || { lat: 23.5, lon: 121, wind: 0, pressure: 1000 };
-  const trackLatLngs = track.map(t => [t.lat, t.lon]);
+  const trackLatLngs = track.map(t => [t.lat || 23.5, t.lon || 121]);
 
-  const topAvgWindStations = Object.keys(currentData)
+  const topAvgWindStations = (currentData ? Object.keys(currentData) : [])
     .map(stno => ({
-      name: data.stations[stno]?.n,
+      name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
       stno,
-      wind: currentData[stno][0] !== -999 ? currentData[stno][0] : 0,
+      wind: (currentData[stno] && currentData[stno][0] !== -999) ? currentData[stno][0] : 0,
     }))
-    .sort((a, b) => b.wind - a.wind)
+    .sort((a, b) => (b.wind || 0) - (a.wind || 0))
     .slice(0, 5);
 
-  const topGustWindStations = Object.keys(currentData)
+  const topGustWindStations = (currentData ? Object.keys(currentData) : [])
     .map(stno => ({
-      name: data.stations[stno]?.n,
+      name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
       stno,
-      wind: currentData[stno][2] !== -999 ? currentData[stno][2] : 0,
+      wind: (currentData[stno] && currentData[stno][2] !== -999) ? currentData[stno][2] : 0,
     }))
-    .sort((a, b) => b.wind - a.wind)
+    .sort((a, b) => (b.wind || 0) - (a.wind || 0))
     .filter(st => st.wind > 0)
     .slice(0, 5);
 
