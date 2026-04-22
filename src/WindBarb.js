@@ -5,12 +5,13 @@ import L from 'leaflet';
 // 1 pennant = 50 knots (25 m/s)
 // 1 long barb = 10 knots (5 m/s)
 // 1 short barb = 5 knots (2.5 m/s)
-export function createWindBarbIcon(speed, dir, baseColor="#dae2fd") {
-  if (speed <= 0.5 || isNaN(dir) || dir === -999) {
-    // Calm wind (2 knots or less) = empty circle
+export function createWindBarbIcon(speed, dir, baseColor="#dae2fd", opacity=1) {
+  if (speed <= 0.3 || isNaN(dir) || dir === -999) {
+    // Calm wind (2 knots or less) = faint gray circle
+    const color = (speed <= 0.3) ? "rgba(161, 161, 170, 0.4)" : baseColor;
     const svg = `
       <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="3" fill="none" stroke="${baseColor}" stroke-width="1.5" />
+        <circle cx="12" cy="12" r="2" fill="${color}" opacity="${opacity}" />
       </svg>`;
     return L.divIcon({
       html: svg,
@@ -78,7 +79,7 @@ export function createWindBarbIcon(speed, dir, baseColor="#dae2fd") {
   // Thus rotation amount is just `dir`.
   const svg = `
     <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-      <g transform="rotate(${dir}, 20, 20)">
+      <g transform="rotate(${dir}, 20, 20)" opacity="${opacity}">
         ${svgPaths}
       </g>
     </svg>`;
