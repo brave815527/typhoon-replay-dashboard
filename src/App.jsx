@@ -5,6 +5,7 @@ import TimelineScrubber from './components/TimelineScrubber.jsx';
 import InfoPanel from './components/InfoPanel.jsx';
 import RankingPanel from './components/RankingPanel.jsx';
 import TyphoonMap from './components/TyphoonMap.jsx';
+import { isValidValue } from './utils';
 
 function App() {
   const [catalogue, setCatalogue] = useState(null);
@@ -123,8 +124,9 @@ function App() {
       .map(stno => ({
         stno,
         name: stations[stno]?.n || stno,
-        wind: (currentData[stno] && currentData[stno][0] !== -999) ? currentData[stno][0] : 0
+        wind: (currentData[stno] && isValidValue(currentData[stno][0])) ? currentData[stno][0] : -999
       }))
+      .filter(s => isValidValue(s.wind))
       .sort((a, b) => b.wind - a.wind)
       .slice(0, 5);
   }, [currentData, stations]);
@@ -134,10 +136,10 @@ function App() {
       .map(stno => ({
         stno,
         name: stations[stno]?.n || stno,
-        wind: (currentData[stno] && currentData[stno][2] !== -999) ? currentData[stno][2] : 0
+        wind: (currentData[stno] && isValidValue(currentData[stno][2])) ? currentData[stno][2] : -999
       }))
+      .filter(s => isValidValue(s.wind))
       .sort((a, b) => b.wind - a.wind)
-      .filter(s => s.wind > 0)
       .slice(0, 5);
   }, [currentData, stations]);
 

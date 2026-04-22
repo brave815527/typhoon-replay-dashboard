@@ -1,4 +1,14 @@
+
+export function isValidValue(val) {
+  if (val === null || val === undefined) return false;
+  const num = Number(val);
+  // CWA common null values: -999, -99, 999, 999.9, etc.
+  if (num < -50 || num >= 990) return false;
+  return true;
+}
+
 export function getBeaufortLabel(speed) {
+  if (!isValidValue(speed)) return '缺測';
   if (speed < 0.3) return '0級';
   if (speed < 1.6) return '1級';
   if (speed < 3.4) return '2級';
@@ -21,6 +31,7 @@ export function getBeaufortLabel(speed) {
 }
 
 export function getTyphoonIntensity(speed) {
+  if (!isValidValue(speed)) return { label: '資料不足', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30' };
   if (speed < 17.2) return { label: '熱帶性低氣壓', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' };
   if (speed < 32.7) return { label: '輕度颱風', color: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' };
   if (speed < 51.0) return { label: '中度颱風', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30' };

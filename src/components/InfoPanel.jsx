@@ -48,12 +48,16 @@ const InfoPanel = ({
             <div className="grid grid-cols-2 gap-4 mt-2">
               <div>
                 <p className="font-label text-[9px] text-on-surface-variant uppercase tracking-wider">近中心最大風速</p>
-                <p className="font-headline text-md font-bold text-white">{currentTyphoonPos.wind} <span className="text-xs font-normal text-outline">m/s</span></p>
+                <p className="font-headline text-md font-bold text-white">
+                  {isValidValue(currentTyphoonPos.wind) ? currentTyphoonPos.wind : '-'} <span className="text-xs font-normal text-outline">m/s</span>
+                </p>
                 <p className="text-[10px] text-secondary-fixed">{getBeaufortLabel(currentTyphoonPos.wind)}</p>
               </div>
               <div className="border-l border-outline-variant/15 pl-4">
                 <p className="font-label text-[9px] text-on-surface-variant uppercase tracking-wider">瞬間最大陣風</p>
-                <p className="font-headline text-md font-bold text-white">{currentTyphoonPos.gust} <span className="text-xs font-normal text-outline">m/s</span></p>
+                <p className="font-headline text-md font-bold text-white">
+                  {isValidValue(currentTyphoonPos.gust) ? currentTyphoonPos.gust : '-'} <span className="text-xs font-normal text-outline">m/s</span>
+                </p>
                 <p className="text-[10px] text-error">{getBeaufortLabel(currentTyphoonPos.gust)}</p>
               </div>
             </div>
@@ -61,7 +65,9 @@ const InfoPanel = ({
             <div className="border-t border-outline-variant/15 mt-3 pt-3 flex justify-between items-center">
                <div>
                  <p className="font-label text-[9px] text-on-surface-variant mb-1 tracking-wider uppercase">中心氣壓</p>
-                 <p className="font-headline text-sm font-bold text-primary-fixed">{currentTyphoonPos.pressure} hPa</p>
+                 <p className="font-headline text-sm font-bold text-primary-fixed">
+                   {isValidValue(currentTyphoonPos.pressure) ? `${currentTyphoonPos.pressure} hPa` : '-'}
+                 </p>
                </div>
                <div className={`text-[10px] font-bold px-2 py-0.5 rounded leading-tight ${currentTyphoonPos.warn === 2 ? 'bg-error text-error-container' : currentTyphoonPos.warn === 1 ? 'bg-primary text-on-primary' : 'bg-white/10 text-white'}`}>
                 {currentTyphoonPos.warn === 2 ? '海陸警' : currentTyphoonPos.warn === 1 ? '海警' : '無警報'}

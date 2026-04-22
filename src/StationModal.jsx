@@ -13,6 +13,7 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Line, Bar } from 'react-chartjs-2';
+import { isValidValue } from './utils';
 
 ChartJS.register(
   CategoryScale,
@@ -35,7 +36,7 @@ const StationModal = ({ stationId, data, onClose }) => {
   const extremes = station.extremes || {};
 
   const getWindDirCH = (deg) => {
-    if (deg === undefined || deg === null || deg < 0 || deg > 360) return "";
+    if (!isValidValue(deg) || deg < 0 || deg > 360) return "";
     const dirs = ["北", "北北東", "東北", "東北東", "東", "東南東", "東南", "南南東", "南", "南南西", "西南", "西南西", "西", "西北西", "西北", "北北西"];
     const idx = Math.floor(((deg + 11.25) % 360) / 22.5);
     return dirs[idx] + "風";
@@ -65,13 +66,13 @@ const StationModal = ({ stationId, data, onClose }) => {
         labels.push(`${String(date.getMonth() + 1).padStart(2,'0')}/${String(day).padStart(2,'0')} ${String(hour).padStart(2,'0')}:00`);
         dateMapping.push({ day, hour });
 
-        parsedData.windSpeed.push(vals[0] !== -999 ? vals[0] : null);
-        parsedData.windDir.push(vals[1] !== -999 ? vals[1] : null);
-        parsedData.windGust.push(vals[2] !== -999 ? vals[2] : null);
-        parsedData.temp.push(vals[4] !== -999 ? vals[4] : null);
-        parsedData.humidity.push(vals[5] !== -999 ? vals[5] : null);
-        parsedData.pressure.push(vals[6] !== -999 ? vals[6] : null);
-        parsedData.precip.push(vals[7] !== -999 ? vals[7] : null);
+        parsedData.windSpeed.push(isValidValue(vals[0]) ? vals[0] : null);
+        parsedData.windDir.push(isValidValue(vals[1]) ? vals[1] : null);
+        parsedData.windGust.push(isValidValue(vals[2]) ? vals[2] : null);
+        parsedData.temp.push(isValidValue(vals[4]) ? vals[4] : null);
+        parsedData.humidity.push(isValidValue(vals[5]) ? vals[5] : null);
+        parsedData.pressure.push(isValidValue(vals[6]) ? vals[6] : null);
+        parsedData.precip.push(isValidValue(vals[7]) ? vals[7] : null);
       }
     });
 

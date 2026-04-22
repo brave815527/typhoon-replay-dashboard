@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { MapContainer, TileLayer, Marker, CircleMarker, Polyline, Circle } from 'react-leaflet';
 import { createWindBarbIcon } from '../WindBarb.js';
+import { isValidValue } from '../utils';
 
 const TyphoonMap = ({ data, currentData, currentTyphoonPos, track, trackLatLngs, setSelectedStation }) => {
   return (
@@ -50,12 +51,12 @@ const TyphoonMap = ({ data, currentData, currentTyphoonPos, track, trackLatLngs,
           let dir = currentData[stno][1];
 
           // Fallback if Average Wind is missing but Gust exists
-          if (wind === -999) {
+          if (!isValidValue(wind)) {
             wind = currentData[stno][2];
             dir = currentData[stno][3];
           }
 
-          if (wind === -999 || dir === -999) return null;
+          if (!isValidValue(wind) || !isValidValue(dir)) return null;
           
           let color = '#94a3b8'; // 5級以下：刷淡灰
           let opacity = 0.5;
