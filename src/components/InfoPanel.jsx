@@ -11,6 +11,8 @@ const InfoPanel = ({
   isSidebarOpen, 
   setIsSidebarOpen 
 }) => {
+  const intensity = getTyphoonIntensity(currentTyphoonPos?.wind || 0);
+
   return (
     <div className={`
       absolute z-20 w-full md:w-80 
