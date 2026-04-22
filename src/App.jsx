@@ -21,7 +21,8 @@ function App() {
 
   // 1. Initial Catalogue Load
   useEffect(() => {
-    fetch('./data/catalogue.json')
+    const baseUrl = import.meta.env.BASE_URL;
+    fetch(`${baseUrl}data/catalogue.json`)
       .then(res => res.json())
       .then(json => {
         setCatalogue(json);
@@ -49,7 +50,8 @@ function App() {
     setCurrentTimeIndex(0);
     setIsPlaying(false);
 
-    fetch(`./data/${selectedYear}/${selectedTyphoon}.json`)
+    const baseUrl = import.meta.env.BASE_URL;
+    fetch(`${baseUrl}data/${selectedYear}/${selectedTyphoon}.json`)
       .then(res => {
         if (!res.ok) throw new Error("Data not found");
         return res.json();
