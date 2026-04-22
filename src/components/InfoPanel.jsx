@@ -26,8 +26,8 @@ const InfoPanel = ({
             <br/>
             <span className="text-sm font-normal text-slate-400">({data.typhoon.name} {selectedYear})</span>
           </h2>
-          <div className={`px-3 py-1 rounded border text-[10px] font-bold whitespace-nowrap ${getTyphoonIntensity(currentTyphoonPos.wind).color}`}>
-            {getTyphoonIntensity(currentTyphoonPos.wind).label}
+          <div className={`px-3 py-1 rounded border text-[10px] font-bold whitespace-nowrap ${intensity.color}`}>
+            {intensity.label}
           </div>
         </div>
         

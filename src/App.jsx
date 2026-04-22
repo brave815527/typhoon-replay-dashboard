@@ -191,30 +191,19 @@ function App() {
     );
   }
 
-  if (isLoading || !data) {
-    return (
-      <div className="flex flex-col h-screen items-center justify-center bg-slate-950 text-white">
-        <TopNav catalogue={catalogue} selectedYear={selectedYear} setSelectedYear={setSelectedYear} selectedTyphoon={selectedTyphoon} setSelectedTyphoon={setSelectedTyphoon} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
-          <div className="text-cyan-400 font-bold tracking-widest animate-pulse">載入資料中...</div>
-        </div>
-      </div>
-    );
-  }
+  if (!data || !data.typhoon || !data.typhoon.track) return (
+    <div className="flex flex-col h-screen items-center justify-center bg-slate-950 text-white">
+      <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
+      <p className="text-cyan-500 font-bold tracking-widest animate-pulse">LOADING DATASET...</p>
+    </div>
+  );
 
-  const epochs = Object.keys(data.hourlyData).sort((a, b) => Number(a) - Number(b));
-  const currentEpoch = epochs[currentTimeIndex];
-  const currentData = data.hourlyData[currentEpoch];
-
-  const track = data.typhoon.track;
-  let currentTyphoonPos = track[0];
-  for (let i = 0; i < track.length; i++) {
-    if (track[i].epoch <= Number(currentEpoch)) {
-      currentTyphoonPos = track[i];
-    }
-  }
-
+  const hourlyData = data.hourlyData || {};
+  const epochs = Object.keys(hourlyData).sort((a, b) => Number(a) - Number(b));
+  const track = data.typhoon.track || [];
+  const currentEpoch = track[currentTimeIndex]?.epoch || (epochs.length > 0 ? epochs[currentTimeIndex] : null);
+  const currentData = currentEpoch ? (hourlyData[currentEpoch] || {}) : {};
+  const currentTyphoonPos = track[currentTimeIndex] || track[0] || { lat: 23.5, lon: 121, wind: 0, pressure: 1000 };
   const trackLatLngs = track.map(t => [t.lat, t.lon]);
 
   const topAvgWindStations = Object.keys(currentData)

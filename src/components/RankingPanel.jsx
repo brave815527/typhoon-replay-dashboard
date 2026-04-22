@@ -2,6 +2,7 @@ import React from 'react';
 import { getBeaufortLabel } from '../utils';
 
 const RankingPanel = ({ topAvgWindStations, topGustWindStations, setSelectedStation }) => {
+  if (!topAvgWindStations || !topGustWindStations) return null;
   return (
     <div className="absolute right-4 top-24 z-10 w-80 bg-surface-container-high/80 backdrop-blur-[20px] rounded p-6 shadow-2xl border border-outline-variant/30 hidden md:flex flex-col gap-6 max-h-[80vh] overflow-y-auto">
       <div>
