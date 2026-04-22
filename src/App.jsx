@@ -41,7 +41,17 @@ function App() {
       });
   }, []);
 
-  // 2. Typhoon Data Load
+  // 2. Auto-update typhoon when year changes
+  useEffect(() => {
+    if (catalogue && selectedYear && catalogue[selectedYear]) {
+      const typhoons = catalogue[selectedYear];
+      if (typhoons.length > 0 && !typhoons.includes(selectedTyphoon)) {
+        setSelectedTyphoon(typhoons[0]);
+      }
+    }
+  }, [selectedYear, catalogue]);
+
+  // 3. Typhoon Data Load
   useEffect(() => {
     if (!selectedYear || !selectedTyphoon) return;
     
