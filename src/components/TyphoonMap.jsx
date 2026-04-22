@@ -8,7 +8,13 @@ const TyphoonMap = ({ data, currentData, currentTyphoonPos, track, trackLatLngs,
   
   return (
     <div className="absolute inset-0 z-0 bg-slate-900">
-      <MapContainer center={[23.5, 121]} zoom={window.innerWidth < 768 ? 6 : 7} className="w-full h-full" zoomControl={false}>
+      <MapContainer 
+        center={[23.5, 121]} 
+        zoom={window.innerWidth < 768 ? 6 : 7} 
+        className="w-full h-full" 
+        zoomControl={false}
+        scrollWheelZoom={true}
+      >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://carto.com/">Carto</a>'

@@ -169,6 +169,38 @@ function App() {
     return () => clearInterval(interval);
   }, [isPlaying, epochs, playbackSpeed]);
 
+  // 5. Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Don't trigger if user is typing in a select or modal is open
+      if (e.target.tagName === 'SELECT' || selectedStation) return;
+
+      switch(e.code) {
+        case 'Space':
+          e.preventDefault();
+          setIsPlaying(prev => !prev);
+          break;
+        case 'ArrowRight':
+          setCurrentTimeIndex(prev => Math.min(prev + 1, epochs.length - 1));
+          break;
+        case 'ArrowLeft':
+          setCurrentTimeIndex(prev => Math.max(prev - 1, 0));
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setPlaybackSpeed(prev => prev === 4 ? 1 : prev * 2);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          setPlaybackSpeed(prev => prev === 1 ? 4 : prev / 2);
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [epochs.length, selectedStation]);
+
   if (error) {
     return (
       <div className="flex items-center justify-center h-screen bg-slate-950 text-white p-4 text-center">
