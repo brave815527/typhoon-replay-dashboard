@@ -171,76 +171,91 @@ function App() {
 
   if (error) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-slate-950 text-red-400 p-10 text-center font-bold">
-        Error: {error}
-      </div>
-    );
-  }
-
-  if (!data || isLoading) {
-    return (
-      <div className="flex flex-col h-screen w-screen items-center justify-center bg-slate-950 text-white">
-        <div className="w-16 h-16 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin mb-6"></div>
-        <div className="text-cyan-400 font-bold tracking-[0.2em] uppercase">Initializing Replay System...</div>
+      <div className="flex items-center justify-center h-screen bg-slate-950 text-white p-4 text-center">
+        <div className="max-w-md w-full bg-slate-900 p-10 rounded-3xl border border-red-500/30 shadow-2xl">
+          <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/50">
+            <span className="material-symbols-outlined text-red-500 text-4xl">warning</span>
+          </div>
+          <h2 className="text-3xl font-black mb-4 tracking-tighter">發生錯誤</h2>
+          <p className="text-slate-400 mb-8 font-medium">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="w-full py-4 bg-red-600 rounded-2xl font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 active:scale-[0.98]"
+          >
+            重新載入頁面
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-slate-950 text-slate-200 font-sans overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden bg-slate-950 font-sans text-slate-200">
       <TopNav 
         catalogue={catalogue} 
         selectedYear={selectedYear} 
-        setSelectedYear={setSelectedYear} 
-        selectedTyphoon={selectedTyphoon} 
-        setSelectedTyphoon={setSelectedTyphoon} 
-        isSidebarOpen={isSidebarOpen} 
-        setIsSidebarOpen={setIsSidebarOpen} 
+        setSelectedYear={setSelectedYear}
+        selectedTyphoon={selectedTyphoon}
+        setSelectedTyphoon={setSelectedTyphoon}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <main className="flex-1 relative w-full h-full pt-16 pb-20">
-        <TyphoonMap 
-          data={data} 
-          currentData={currentData} 
-          currentTyphoonPos={currentTyphoonPos} 
-          track={track} 
-          trackLatLngs={trackLatLngs} 
-          setSelectedStation={setSelectedStation} 
-        />
-        
-        <InfoPanel 
-          data={data} 
-          currentEpoch={currentEpoch} 
-          currentTyphoonPos={currentTyphoonPos} 
-          selectedYear={selectedYear} 
-          topAvgWindStations={topAvgWindStations} 
-          setSelectedStation={setSelectedStation} 
-          isSidebarOpen={isSidebarOpen} 
-          setIsSidebarOpen={setIsSidebarOpen} 
-        />
+      {(!data || isLoading) ? (
+        <div className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-md">
+          <div className="relative">
+            <div className="w-24 h-24 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-12 h-12 border-4 border-cyan-400/20 border-b-cyan-400 rounded-full animate-spin-reverse"></div>
+            </div>
+          </div>
+          <p className="mt-8 text-blue-200 font-black tracking-[0.3em] uppercase text-xs animate-pulse">正在加載颱風大數據...</p>
+        </div>
+      ) : (
+        <>
+          <TyphoonMap 
+            data={data} 
+            currentData={currentData}
+            currentTyphoonPos={currentTyphoonPos}
+            track={track}
+            trackLatLngs={trackLatLngs}
+            setSelectedStation={setSelectedStation}
+          />
+          
+          <InfoPanel 
+            data={data}
+            currentEpoch={currentEpoch}
+            currentTyphoonPos={currentTyphoonPos}
+            selectedYear={selectedYear}
+            topAvgWindStations={topAvgWindStations}
+            setSelectedStation={setSelectedStation}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
 
-        <RankingPanel 
-          topAvgWindStations={topAvgWindStations} 
-          topGustWindStations={topGustWindStations} 
-          setSelectedStation={setSelectedStation} 
-        />
-      </main>
+          <RankingPanel 
+            topAvgWindStations={topAvgWindStations}
+            topGustWindStations={topGustWindStations}
+            setSelectedStation={setSelectedStation}
+          />
 
-      <TimelineScrubber 
-        epochs={epochs} 
-        currentTimeIndex={currentTimeIndex} 
-        setCurrentTimeIndex={setCurrentTimeIndex} 
-        isPlaying={isPlaying} 
-        setIsPlaying={setIsPlaying} 
-        playbackSpeed={playbackSpeed} 
-        setPlaybackSpeed={setPlaybackSpeed} 
-      />
+          <TimelineScrubber 
+            epochs={epochs}
+            currentTimeIndex={currentTimeIndex}
+            setCurrentTimeIndex={setCurrentTimeIndex}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            playbackSpeed={playbackSpeed}
+            setPlaybackSpeed={setPlaybackSpeed}
+          />
+        </>
+      )}
 
       {selectedStation && (
         <StationModal 
-          stationId={selectedStation} 
-          data={data} 
-          onClose={() => setSelectedStation(null)} 
+          stationId={selectedStation}
+          data={data}
+          onClose={() => setSelectedStation(null)}
         />
       )}
     </div>

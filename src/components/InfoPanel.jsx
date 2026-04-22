@@ -11,6 +11,8 @@ const InfoPanel = ({
   isSidebarOpen, 
   setIsSidebarOpen 
 }) => {
+  if (!data || !data.typhoon) return null;
+  
   const windSpeed = Number(currentTyphoonPos?.wind || 0);
   const intensity = getTyphoonIntensity(windSpeed);
 

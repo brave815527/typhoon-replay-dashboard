@@ -4,6 +4,8 @@ import { createWindBarbIcon } from '../WindBarb.js';
 import { isValidValue } from '../utils';
 
 const TyphoonMap = ({ data, currentData, currentTyphoonPos, track, trackLatLngs, setSelectedStation }) => {
+  if (!data || !data.stations) return null;
+  
   return (
     <div className="absolute inset-0 z-0 bg-slate-900">
       <MapContainer center={[23.5, 121]} zoom={window.innerWidth < 768 ? 6 : 7} className="w-full h-full" zoomControl={false}>
