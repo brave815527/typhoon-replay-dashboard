@@ -53,9 +53,16 @@ function App() {
 
   // 3. Typhoon Data Load
   useEffect(() => {
-    if (!selectedYear || !selectedTyphoon) return;
+    if (!selectedYear || !selectedTyphoon || !catalogue) return;
     
+    // Validation: Ensure the selected typhoon actually belongs to the selected year
+    // This prevents race conditions where the year updates before the typhoon name
+    if (catalogue[selectedYear] && !catalogue[selectedYear].includes(selectedTyphoon)) {
+      return;
+    }
+
     setIsLoading(true);
+    setError(null); // Clear previous errors
     setData(null);
     setCurrentTimeIndex(0);
     setIsPlaying(false);
