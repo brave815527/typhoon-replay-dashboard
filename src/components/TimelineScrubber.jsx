@@ -11,14 +11,45 @@ const TimelineScrubber = ({
 }) => {
   const currentEpoch = epochs[currentTimeIndex];
 
+  // Handle wheel events
+  const handleWheel = (e) => {
+    if (e.deltaY > 0) {
+      setCurrentTimeIndex(prev => Math.min(prev + 1, epochs.length - 1));
+    } else {
+      setCurrentTimeIndex(prev => Math.max(prev - 1, 0));
+    }
+  };
+
+  // Handle drag/touch interaction
+  const handleInteraction = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    setCurrentTimeIndex(Math.floor(ratio * (epochs.length - 1)));
+  };
+
+  const handlePointerDown = (e) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    handleInteraction(e);
+  };
+
+  const handlePointerMove = (e) => {
+    if (e.buttons === 1 || e.pointerType === 'touch') {
+      handleInteraction(e);
+    }
+  };
+
   return (
-    <div className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20">
+    <div 
+      className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20"
+      onWheel={handleWheel}
+    >
       <div className="absolute -top-6 left-0 w-full px-4 md:px-24">
-        <div className="relative w-full h-8 flex items-center cursor-pointer touch-none" onClick={(e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          const ratio = (e.clientX - rect.left) / rect.width;
-          setCurrentTimeIndex(Math.floor(ratio * epochs.length));
-        }}>
+        <div 
+          className="relative w-full h-12 flex items-center cursor-pointer touch-none" 
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+        >
           <div className="absolute w-full h-1.5 bg-outline-variant/40 rounded-full"></div>
           <div className="absolute h-1.5 bg-secondary rounded-full" style={{ width: `${(currentTimeIndex / Math.max(1, epochs.length - 1)) * 100}%` }}></div>
           
