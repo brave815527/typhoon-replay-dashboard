@@ -1,9 +1,10 @@
 
 export function isValidValue(val) {
-  if (val === null || val === undefined) return false;
+  if (val === null || val === undefined || val === '') return false;
   const num = Number(val);
-  // CWA common null values: -999, -99, 999, 999.9, etc.
-  if (num < -50 || num >= 990) return false;
+  // CWA common null/special values: -999, -999.7, -99, 999, 999.9, etc.
+  // We exclude anything less than -50 or greater than/equal to 990
+  if (isNaN(num) || num < -50 || num >= 990) return false;
   return true;
 }
 
