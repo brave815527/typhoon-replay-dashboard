@@ -7,6 +7,7 @@ import RankingPanel from './components/RankingPanel.jsx';
 import TyphoonMap from './components/TyphoonMap.jsx';
 
 function App() {
+  console.log("App component rendering start");
   const [catalogue, setCatalogue] = useState(null);
   const [data, setData] = useState(null);
   const [currentTimeIndex, setCurrentTimeIndex] = useState(0);
