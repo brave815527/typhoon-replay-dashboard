@@ -214,97 +214,111 @@ function App() {
   const currentTyphoonPos = track[currentTimeIndex] || track[0] || { lat: 23.5, lon: 121, wind: 0, pressure: 1000 };
   const trackLatLngs = track.map(t => [t.lat || 23.5, t.lon || 121]);
 
-  const topAvgWindStations = (currentData ? Object.keys(currentData) : [])
-    .map(stno => ({
-      name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
-      stno,
-      wind: (currentData[stno] && currentData[stno][0] !== -999) ? currentData[stno][0] : 0,
-    }))
-    .sort((a, b) => (b.wind || 0) - (a.wind || 0))
-    .slice(0, 5);
+  console.log("App state:", { 
+    hasData: !!data, 
+    hasTyphoon: data?.typhoon ? "yes" : "no", 
+    trackLen: track.length,
+    currentTimeIndex,
+    currentEpoch,
+    stationsCount: data?.stations ? Object.keys(data.stations).length : 0
+  });
 
-  const topGustWindStations = (currentData ? Object.keys(currentData) : [])
-    .map(stno => ({
-      name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
-      stno,
-      wind: (currentData[stno] && currentData[stno][2] !== -999) ? currentData[stno][2] : 0,
-    }))
-    .sort((a, b) => (b.wind || 0) - (a.wind || 0))
-    .filter(st => st.wind > 0)
-    .slice(0, 5);
+  try {
+    const topAvgWindStations = (currentData ? Object.keys(currentData) : [])
+      .map(stno => ({
+        name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
+        stno,
+        wind: (currentData[stno] && currentData[stno][0] !== -999) ? currentData[stno][0] : 0,
+      }))
+      .sort((a, b) => (b.wind || 0) - (a.wind || 0))
+      .slice(0, 5);
 
-  return (
-    <div className="flex flex-col h-screen w-screen bg-surface-dim text-on-surface font-body overflow-hidden">
-      <TopNav 
-        catalogue={catalogue} 
-        selectedYear={selectedYear} 
-        setSelectedYear={setSelectedYear} 
-        selectedTyphoon={selectedTyphoon} 
-        setSelectedTyphoon={setSelectedTyphoon} 
-        isSidebarOpen={isSidebarOpen} 
-        setIsSidebarOpen={setIsSidebarOpen} 
-      />
+    const topGustWindStations = (currentData ? Object.keys(currentData) : [])
+      .map(stno => ({
+        name: (data.stations && data.stations[stno]) ? data.stations[stno].n : stno,
+        stno,
+        wind: (currentData[stno] && currentData[stno][2] !== -999) ? currentData[stno][2] : 0,
+      }))
+      .sort((a, b) => (b.wind || 0) - (a.wind || 0))
+      .filter(st => st.wind > 0)
+      .slice(0, 5);
 
-      <aside className="hidden md:flex fixed left-0 top-16 h-[calc(100vh-4rem)] flex-col items-center py-8 z-40 bg-slate-900/80 backdrop-blur-2xl w-20 border-r border-white/5">
-        <div className="flex flex-col gap-8 w-full">
-          <button className="w-full py-4 flex flex-col items-center gap-2 bg-blue-500/10 text-cyan-400 border-r-2 border-cyan-400 hover:bg-white/5">
-            <span className="material-symbols-outlined">radar</span>
-            <span className="font-['Inter'] font-medium text-xs uppercase tracking-widest">颱風路徑</span>
-          </button>
-          <button className="w-full py-4 flex flex-col items-center gap-2 text-slate-500 hover:text-slate-300 hover:bg-white/5">
-            <span className="material-symbols-outlined">history</span>
-            <span className="font-['Inter'] font-medium text-xs uppercase tracking-widest">觀測紀錄</span>
-          </button>
-        </div>
-      </aside>
-
-      <main className="flex-1 relative w-full h-full pt-16 md:pl-20 pb-20">
-        <TyphoonMap 
-          data={data} 
-          currentData={currentData} 
-          currentTyphoonPos={currentTyphoonPos} 
-          track={track} 
-          trackLatLngs={trackLatLngs} 
-          setSelectedStation={setSelectedStation} 
-        />
-        
-        <InfoPanel 
-          data={data} 
-          currentEpoch={currentEpoch} 
-          currentTyphoonPos={currentTyphoonPos} 
+    return (
+      <div className="flex flex-col h-screen w-screen bg-surface-dim text-on-surface font-body overflow-hidden">
+        <TopNav 
+          catalogue={catalogue} 
           selectedYear={selectedYear} 
-          topAvgWindStations={topAvgWindStations} 
-          setSelectedStation={setSelectedStation} 
+          setSelectedYear={setSelectedYear} 
+          selectedTyphoon={selectedTyphoon} 
+          setSelectedTyphoon={setSelectedTyphoon} 
           isSidebarOpen={isSidebarOpen} 
           setIsSidebarOpen={setIsSidebarOpen} 
         />
 
-        <RankingPanel 
-          topAvgWindStations={topAvgWindStations} 
-          topGustWindStations={topGustWindStations} 
-          setSelectedStation={setSelectedStation} 
-        />
-      </main>
+        <aside className="hidden md:flex fixed left-0 top-16 h-[calc(100vh-4rem)] flex-col items-center py-8 z-40 bg-slate-900/80 backdrop-blur-2xl w-20 border-r border-white/5">
+          <div className="flex flex-col gap-8 w-full">
+            <button className="w-full py-4 flex flex-col items-center gap-2 bg-blue-500/10 text-cyan-400 border-r-2 border-cyan-400 hover:bg-white/5">
+              <span className="material-symbols-outlined">radar</span>
+              <span className="font-['Inter'] font-medium text-xs uppercase tracking-widest">颱風路徑</span>
+            </button>
+            <button className="w-full py-4 flex flex-col items-center gap-2 text-slate-500 hover:text-slate-300 hover:bg-white/5">
+              <span className="material-symbols-outlined">history</span>
+              <span className="font-['Inter'] font-medium text-xs uppercase tracking-widest">觀測紀錄</span>
+            </button>
+          </div>
+        </aside>
 
-      <TimelineScrubber 
-        epochs={epochs} 
-        currentTimeIndex={currentTimeIndex} 
-        setCurrentTimeIndex={setCurrentTimeIndex} 
-        isPlaying={isPlaying} 
-        setIsPlaying={setIsPlaying} 
-        playbackSpeed={playbackSpeed} 
-        setPlaybackSpeed={setPlaybackSpeed} 
-      />
+        <main className="flex-1 relative w-full h-full pt-16 md:pl-20 pb-20">
+          <TyphoonMap 
+            data={data} 
+            currentData={currentData} 
+            currentTyphoonPos={currentTyphoonPos} 
+            track={track} 
+            trackLatLngs={trackLatLngs} 
+            setSelectedStation={setSelectedStation} 
+          />
+          
+          <InfoPanel 
+            data={data} 
+            currentEpoch={currentEpoch} 
+            currentTyphoonPos={currentTyphoonPos} 
+            selectedYear={selectedYear} 
+            topAvgWindStations={topAvgWindStations} 
+            setSelectedStation={setSelectedStation} 
+            isSidebarOpen={isSidebarOpen} 
+            setIsSidebarOpen={setIsSidebarOpen} 
+          />
 
-      {selectedStation && data && (
-        <StationModal 
-          stationId={selectedStation} 
-          data={data} 
-          onClose={() => setSelectedStation(null)} 
+          <RankingPanel 
+            topAvgWindStations={topAvgWindStations} 
+            topGustWindStations={topGustWindStations} 
+            setSelectedStation={setSelectedStation} 
+          />
+        </main>
+
+        <TimelineScrubber 
+          epochs={epochs} 
+          currentTimeIndex={currentTimeIndex} 
+          setCurrentTimeIndex={setCurrentTimeIndex} 
+          isPlaying={isPlaying} 
+          setIsPlaying={setIsPlaying} 
+          playbackSpeed={playbackSpeed} 
+          setPlaybackSpeed={setPlaybackSpeed} 
         />
-      )}
-    </div>
-  );
+
+        {selectedStation && data && (
+          <StationModal 
+            stationId={selectedStation} 
+            data={data} 
+            onClose={() => setSelectedStation(null)} 
+          />
+        )}
+      </div>
+    );
+  } catch (err) {
+    console.error("App Render Error:", err);
+    return <div className="text-red-500 p-20 bg-slate-900 h-full">RENDER ERROR: {err.message}</div>;
+  }
 }
 
 export default App;
