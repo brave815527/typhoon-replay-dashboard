@@ -120,24 +120,32 @@ function App() {
   const trackLatLngs = useMemo(() => track.map(t => [t.lat || 23.5, t.lon || 121]), [track]);
 
   const topAvgWindStations = useMemo(() => {
+    if (!currentData || !stations) return [];
     return Object.keys(currentData)
-      .map(stno => ({
-        stno,
-        name: stations[stno]?.n || stno,
-        wind: (currentData[stno] && isValidValue(currentData[stno][0])) ? currentData[stno][0] : -999
-      }))
+      .map(stno => {
+        const val = currentData[stno] ? currentData[stno][0] : -999;
+        return {
+          stno,
+          name: stations[stno]?.n || stno,
+          wind: isValidValue(val) ? val : -999
+        };
+      })
       .filter(s => isValidValue(s.wind))
       .sort((a, b) => b.wind - a.wind)
       .slice(0, 5);
   }, [currentData, stations]);
 
   const topGustWindStations = useMemo(() => {
+    if (!currentData || !stations) return [];
     return Object.keys(currentData)
-      .map(stno => ({
-        stno,
-        name: stations[stno]?.n || stno,
-        wind: (currentData[stno] && isValidValue(currentData[stno][2])) ? currentData[stno][2] : -999
-      }))
+      .map(stno => {
+        const val = currentData[stno] ? currentData[stno][2] : -999;
+        return {
+          stno,
+          name: stations[stno]?.n || stno,
+          wind: isValidValue(val) ? val : -999
+        };
+      })
       .filter(s => isValidValue(s.wind))
       .sort((a, b) => b.wind - a.wind)
       .slice(0, 5);
