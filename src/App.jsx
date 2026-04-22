@@ -56,14 +56,15 @@ function App() {
   useEffect(() => {
     if (!selectedYear || !selectedTyphoon || !catalogue) return;
     
-    // Validation: Ensure the selected typhoon actually belongs to the selected year
-    // This prevents race conditions where the year updates before the typhoon name
-    if (catalogue[selectedYear] && !catalogue[selectedYear].includes(selectedTyphoon)) {
+    // Strict Validation: Only fetch if the combination is explicitly valid in the catalogue
+    const typhoonsInYear = catalogue[selectedYear];
+    if (!typhoonsInYear || !typhoonsInYear.includes(selectedTyphoon)) {
+      console.log(`Waiting for selection sync: ${selectedYear}/${selectedTyphoon}`);
       return;
     }
 
     setIsLoading(true);
-    setError(null); // Clear previous errors
+    setError(null); 
     setData(null);
     setCurrentTimeIndex(0);
     setIsPlaying(false);
