@@ -13,9 +13,10 @@ const TimelineScrubber = ({
 
   // Handle wheel events
   const handleWheel = (e) => {
+    // DeltaY > 0 is scrolling down (forward time)
     if (e.deltaY > 0) {
       setCurrentTimeIndex(prev => Math.min(prev + 1, epochs.length - 1));
-    } else {
+    } else if (e.deltaY < 0) {
       setCurrentTimeIndex(prev => Math.max(prev - 1, 0));
     }
   };
@@ -23,9 +24,13 @@ const TimelineScrubber = ({
   // Handle drag/touch interaction
   const handleInteraction = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    // Use clientX directly from PointerEvent
+    const clientX = e.clientX;
     const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-    setCurrentTimeIndex(Math.floor(ratio * (epochs.length - 1)));
+    const newIndex = Math.floor(ratio * (epochs.length - 1));
+    if (newIndex >= 0 && newIndex < epochs.length) {
+      setCurrentTimeIndex(newIndex);
+    }
   };
 
   const handlePointerDown = (e) => {
@@ -34,14 +39,18 @@ const TimelineScrubber = ({
   };
 
   const handlePointerMove = (e) => {
-    if (e.buttons === 1 || e.pointerType === 'touch') {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
       handleInteraction(e);
     }
   };
 
+  const handlePointerUp = (e) => {
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
+
   return (
     <div 
-      className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20"
+      className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20 select-none"
       onWheel={handleWheel}
     >
       <div className="absolute -top-6 left-0 w-full px-4 md:px-24">
@@ -49,6 +58,8 @@ const TimelineScrubber = ({
           className="relative w-full h-12 flex items-center cursor-pointer touch-none" 
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
         >
           <div className="absolute w-full h-1.5 bg-outline-variant/40 rounded-full"></div>
           <div className="absolute h-1.5 bg-secondary rounded-full" style={{ width: `${(currentTimeIndex / Math.max(1, epochs.length - 1)) * 100}%` }}></div>
