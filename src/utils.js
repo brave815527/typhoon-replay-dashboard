@@ -40,13 +40,29 @@ export function getTyphoonIntensity(speed) {
 }
 
 export const TYPHOON_NAME_MAP = {
-  'DANAS': '丹娜絲',
-  'PODUL': '百合',
-  'GAEMI': '凱米',
-  'KONG-REY': '康芮',
-  'KRATHON': '山陀兒',
-  'DOKSURI': '杜蘇芮',
-  'KOINU': '小犬',
-  'MAWAR': '瑪娃',
-  'SAOLA': '蘇拉'
+  // 2020-2025
+  'GAEMI': '凱米', 'KONG-REY': '康芮', 'KRATHON': '山陀兒', 'DANAS': '丹娜絲', 'PODUL': '百合',
+  'HINNAMNOR': '軒嵐諾', 'MUIFA': '梅花', 'CHANTHU': '璨樹', 'CHOI-WAN': '彩雲', 'IN-FA': '煙花',
+  'KOMPASU': '圓規', 'LUPIT': '盧碧', 'ATSANI': '艾莎尼', 'BAVI': '巴威', 'HAGUPIT': '哈格比',
+  'MEKKHALA': '米克拉', 'VONGFONG': '黃蜂',
+  // 2010-2019
+  'BAILU': '白鹿', 'LEKIMA': '利奇馬', 'MITAG': '米塔', 'MANGKHUT': '山竹', 'MARIA': '瑪莉亞',
+  'GUCHOL': '谷超', 'HAITANG': '海棠', 'HATO': '天鴿', 'NESAT': '尼莎', 'TALIM': '泰利',
+  'MALAKAS': '馬勒卡', 'MEGI': '梅姬', 'MERANTI': '莫蘭蒂', 'NEPARTAK': '尼伯特',
+  'CHAN-HOM': '昌鴻', 'DUJUAN': '杜鵑', 'GONI': '天鵝', 'LINFA': '蓮花', 'NOUL': '紅霞', 'SOUDELOR': '蘇迪勒',
+  'HAGIBIS': '哈吉貝', 'MATMO': '麥德姆', 'FITOW': '菲特', 'SOULIK': '蘇力', 'USAGI': '天兔',
+  'HAIKUI': '海葵', 'JELAWAT': '杰拉華', 'TEMBIN': '天秤', 'SAOLA': '蘇拉', 'DOKSURI': '杜蘇芮',
+  'MUIFA': '梅花', 'SONGDA': '桑達', 'FANAPI': '凡那比', 'LIONROCK': '獅子山', 'NAMTHEUN': '南修',
+  // 2000-2009
+  'PARMA': '芭瑪', 'MORAKOT': '莫拉克', 'MOLAVE': '莫拉菲', 'JANGMI': '薔薇', 'KALMAEGI': '卡玫基',
+  'NURI': '鸚鵡', 'SINLAKU': '森拉克', 'KROSA': '柯羅莎', 'PABUK': '帕布', 'SEPAT': '聖帕',
+  'WIPHA': '韋帕', 'WUTIP': '蝴蝶', 'CHANCHU': '珍珠', 'EWINIAR': '艾維尼', 'SAOMAI': '桑美',
+  'SHANSHAN': '珊珊', 'BILIS': '碧利斯', 'BOPHA': '波發', 'KHANUN': '卡努', 'LONGWANG': '龍王',
+  'MATSA': '馬莎', 'SANVU': '珊瑚', 'AERE': '艾利', 'CONSON': '康森', 'HAIMA': '海馬',
+  'MEARI': '米雷', 'MINDULLE': '敏督利', 'NANMADOL': '南瑪都', 'NOCK-TEN': '洛坦', 'RANANIM': '蘭寧',
+  'IMBUDO': '伊布都', 'KROVANH': '柯羅旺', 'KUJIRA': '鯨魚', 'MELOR': '梅羅', 'NANGKA': '南卡',
+  'VAMCO': '梵高', 'NAKRI': '娜克莉', 'RAMMASUN': '威馬遜', 'CHEBI': '奇比', 'CIMARON': '西馬隆',
+  'HAIYAN': '海燕', 'NARI': '納莉', 'TORAJI': '桃芝', 'TRAMI': '潭美', 'UTOR': '尤特',
+  'YUTU': '玉兔', 'BEBINCA': '比賓卡', 'KAI-TAK': '啟德', 'PRAPIROON': '派比安', 'XANGSANE': '象神',
+  'YAGI': '摩羯', 'FUNG-WONG': '鳳凰'
 };
