@@ -73,9 +73,32 @@ function App() {
   const stations = useMemo(() => data?.stations || {}, [data]);
   const epochs = useMemo(() => Object.keys(hourlyData).sort((a, b) => Number(a) - Number(b)), [hourlyData]);
 
-  const currentEpoch = track[currentTimeIndex]?.epoch || (epochs.length > 0 ? epochs[currentTimeIndex] : null);
-  const currentData = currentEpoch ? (hourlyData[currentEpoch] || {}) : {};
-  const currentTyphoonPos = track[currentTimeIndex] || track[0] || { lat: 23.5, lon: 121, wind: 0, pressure: 1000 };
+  // Master time source should be epochs
+  const currentEpoch = useMemo(() => {
+    return epochs.length > 0 ? epochs[currentTimeIndex] : null;
+  }, [epochs, currentTimeIndex]);
+
+  const currentData = useMemo(() => {
+    return currentEpoch ? (hourlyData[currentEpoch] || {}) : {};
+  }, [currentEpoch, hourlyData]);
+
+  // Find the closest track point for the current epoch
+  const currentTyphoonPos = useMemo(() => {
+    if (!currentEpoch || track.length === 0) return { lat: 23.5, lon: 121, wind: 0, pressure: 1000 };
+    
+    const target = Number(currentEpoch);
+    // Find exact match or the last point before this time
+    let bestPoint = track[0];
+    for (const point of track) {
+      if (point.epoch <= target) {
+        bestPoint = point;
+      } else {
+        break;
+      }
+    }
+    return bestPoint;
+  }, [currentEpoch, track]);
+
   const trackLatLngs = useMemo(() => track.map(t => [t.lat || 23.5, t.lon || 121]), [track]);
 
   const topAvgWindStations = useMemo(() => {
