@@ -231,6 +231,59 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
   const extremes = station.extremes || {};
   const totalRain = chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
 
+  const { maxGustValue, maxGustIndex } = useMemo(() => {
+    let maxVal = -1;
+    let maxIdx = -1;
+    chartData.series.gust.forEach((val, idx) => {
+      if (val !== null && val !== undefined && val > maxVal) {
+        maxVal = val;
+        maxIdx = idx;
+      }
+    });
+    return {
+      maxGustValue: maxVal !== -1 ? maxVal : null,
+      maxGustIndex: maxIdx,
+    };
+  }, [chartData]);
+
+  const windChartOptions = useMemo(() => {
+    const options = {
+      ...commonOptions,
+    };
+    if (maxGustIndex !== -1 && maxGustValue !== null) {
+      options.plugins = {
+        ...commonOptions.plugins,
+        annotation: {
+          annotations: {
+            maxGustPoint: {
+              type: 'point',
+              xValue: chartData.labels[maxGustIndex],
+              yValue: maxGustValue,
+              backgroundColor: '#ef4444',
+              borderColor: '#ffffff',
+              borderWidth: 2,
+              radius: 7,
+            },
+            maxGustLabel: {
+              type: 'label',
+              xValue: chartData.labels[maxGustIndex],
+              yValue: maxGustValue,
+              backgroundColor: 'rgba(239, 68, 68, 0.95)',
+              content: [`最大瞬間風速: ${maxGustValue} m/s`, `時間: ${chartData.labels[maxGustIndex]}`],
+              font: { size: 9, weight: 'bold', family: 'Inter' },
+              color: '#ffffff',
+              borderRadius: 6,
+              padding: 6,
+              yAdjust: -32,
+              position: 'center'
+            }
+          }
+        }
+      };
+    }
+    return options;
+  }, [commonOptions, maxGustIndex, maxGustValue, chartData]);
+
   const copyLink = async () => {
     const url = new URL(window.location.href);
     url.searchParams.set('station', stationId);
@@ -325,7 +378,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
                       pointHoverBorderWidth: 2,
                     },
                   ],
-                }} options={commonOptions} />
+                }} options={windChartOptions} />
               </div>
             </section>
 
