@@ -310,6 +310,23 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
           ...commonOptions.scales.y,
           max: yAxisMax,
         }
+      },
+      plugins: {
+        ...commonOptions.plugins,
+        tooltip: {
+          ...commonOptions.plugins.tooltip,
+          callbacks: {
+            ...commonOptions.plugins.tooltip?.callbacks,
+            footer: function(tooltipItems) {
+              const item = tooltipItems[0];
+              if (item && item.dataIndex === maxGustIdx && maxGustVal !== null) {
+                const timeText = extremes.wd7t ? formatExtremeTime(extremes.wd7t) : chartData.labels[maxGustIdx];
+                return `最大瞬間風速: ${maxGustVal} m/s (${timeText})`;
+              }
+              return '';
+            }
+          }
+        }
       }
     };
 
@@ -323,7 +340,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
       ];
 
       options.plugins = {
-        ...commonOptions.plugins,
+        ...options.plugins,
         annotation: {
           annotations: {
             maxGustPoint: {
@@ -334,9 +351,28 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
               borderColor: '#ffffff',
               borderWidth: 2,
               radius: 7,
+              enter: function(context) {
+                context.chart.canvas.style.cursor = 'pointer';
+                const chart = context.chart;
+                const ann = chart.options.plugins.annotation.annotations.maxGustLabel;
+                if (ann) {
+                  ann.display = true;
+                  chart.update('none');
+                }
+              },
+              leave: function(context) {
+                context.chart.canvas.style.cursor = 'default';
+                const chart = context.chart;
+                const ann = chart.options.plugins.annotation.annotations.maxGustLabel;
+                if (ann) {
+                  ann.display = false;
+                  chart.update('none');
+                }
+              }
             },
             maxGustLabel: {
               type: 'label',
+              display: false,
               xValue: chartData.labels[maxGustIdx],
               yValue: maxGustVal,
               backgroundColor: 'rgba(239, 68, 68, 0.95)',
@@ -346,7 +382,23 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
               borderRadius: 6,
               padding: 6,
               yAdjust: -32,
-              position: 'center'
+              position: 'center',
+              enter: function(context) {
+                const chart = context.chart;
+                const ann = chart.options.plugins.annotation.annotations.maxGustLabel;
+                if (ann) {
+                  ann.display = true;
+                  chart.update('none');
+                }
+              },
+              leave: function(context) {
+                const chart = context.chart;
+                const ann = chart.options.plugins.annotation.annotations.maxGustLabel;
+                if (ann) {
+                  ann.display = false;
+                  chart.update('none');
+                }
+              }
             }
           }
         }
