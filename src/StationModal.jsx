@@ -231,7 +231,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
   const extremes = station.extremes || {};
   const totalRain = chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
 
-  const { maxGustValue, maxGustIndex } = useMemo(() => {
+  const { maxGustValue, maxGustIndex, isAvgWindPeak } = useMemo(() => {
+    // 1. 先嘗試尋找逐時瞬間風 (gust) 的最大值
     let maxVal = -1;
     let maxIdx = -1;
     chartData.series.gust.forEach((val, idx) => {
@@ -240,9 +241,29 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
         maxIdx = idx;
       }
     });
+
+    if (maxVal !== -1) {
+      return {
+        maxGustValue: maxVal,
+        maxGustIndex: maxIdx,
+        isAvgWindPeak: false,
+      };
+    }
+
+    // 2. 若瞬間風皆為空（自動站），則以逐時平均風 (windAvg) 的最高峰為標記點
+    let maxAvgVal = -1;
+    let maxAvgIdx = -1;
+    chartData.series.windAvg.forEach((val, idx) => {
+      if (val !== null && val !== undefined && val > maxAvgVal) {
+        maxAvgVal = val;
+        maxAvgIdx = idx;
+      }
+    });
+
     return {
-      maxGustValue: maxVal !== -1 ? maxVal : null,
-      maxGustIndex: maxIdx,
+      maxGustValue: maxAvgVal !== -1 ? maxAvgVal : null,
+      maxGustIndex: maxAvgIdx,
+      isAvgWindPeak: true,
     };
   }, [chartData]);
 
@@ -251,6 +272,15 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
       ...commonOptions,
     };
     if (maxGustIndex !== -1 && maxGustValue !== null) {
+      const labelContent = isAvgWindPeak ? [
+        `最大瞬間風速: ${extremes.wd7v || '無資料'} m/s`,
+        `出現時間: ${formatExtremeTime(extremes.wd7t)}`,
+        `圖表平均風峰值: ${maxGustValue} m/s`
+      ] : [
+        `最大瞬間風速: ${maxGustValue} m/s`,
+        `時間: ${chartData.labels[maxGustIndex]}`
+      ];
+
       options.plugins = {
         ...commonOptions.plugins,
         annotation: {
@@ -269,7 +299,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
               xValue: chartData.labels[maxGustIndex],
               yValue: maxGustValue,
               backgroundColor: 'rgba(239, 68, 68, 0.95)',
-              content: [`最大瞬間風速: ${maxGustValue} m/s`, `時間: ${chartData.labels[maxGustIndex]}`],
+              content: labelContent,
               font: { size: 9, weight: 'bold', family: 'Inter' },
               color: '#ffffff',
               borderRadius: 6,
@@ -282,7 +312,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
       };
     }
     return options;
-  }, [commonOptions, maxGustIndex, maxGustValue, chartData]);
+  }, [commonOptions, maxGustIndex, maxGustValue, isAvgWindPeak, chartData, extremes]);
 
   const copyLink = async () => {
     const url = new URL(window.location.href);
