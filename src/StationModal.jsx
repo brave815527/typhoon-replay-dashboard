@@ -183,6 +183,57 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
     };
   }, [commonOptions]);
 
+  const windDirectionOptions = useMemo(() => {
+    return {
+      ...commonOptions,
+      scales: {
+        ...commonOptions.scales,
+        y: {
+          min: 0,
+          max: 360,
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: {
+            color: '#38bdf8',
+            stepSize: 45,
+            callback: function(value) {
+              const directions = {
+                0: '北 (0°)',
+                45: '東北 (45°)',
+                90: '東 (90°)',
+                135: '東南 (135°)',
+                180: '南 (180°)',
+                225: '西南 (225°)',
+                270: '西 (270°)',
+                315: '西北 (315°)',
+                360: '北 (360°)'
+              };
+              return directions[value] || '';
+            }
+          },
+          title: {
+            display: true,
+            text: '風向',
+            color: '#38bdf8',
+            font: { size: 10, weight: 'bold' }
+          }
+        }
+      },
+      plugins: {
+        ...commonOptions.plugins,
+        tooltip: {
+          ...commonOptions.plugins.tooltip,
+          callbacks: {
+            label: function(context) {
+              const val = context.raw;
+              if (val === null || val === undefined) return '無資料';
+              return `風向: ${windDirectionText(val)} (${val}°)`;
+            }
+          }
+        }
+      }
+    };
+  }, [commonOptions]);
+
   if (!station || !chartData) return null;
 
   const extremes = station.extremes || {};
@@ -283,6 +334,34 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
                     },
                   ],
                 }} options={commonOptions} />
+              </div>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">風向 (方位與度數)</h3>
+              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+                <Line data={{
+                  labels: chartData.labels,
+                  datasets: [{
+                    label: '風向',
+                    data: chartData.series.windDir,
+                    borderColor: '#38bdf8',
+                    backgroundColor: (context) => {
+                      const chart = context.chart;
+                      const { ctx, chartArea } = chart;
+                      if (!chartArea) return 'rgba(56, 189, 248, 0.05)';
+                      const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                      gradient.addColorStop(0, 'rgba(56, 189, 248, 0.15)');
+                      gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+                      return gradient;
+                    },
+                    fill: true,
+                    tension: 0.1,
+                    pointRadius: 2,
+                    pointBackgroundColor: '#38bdf8',
+                    pointBorderColor: '#38bdf8',
+                  }]
+                }} options={windDirectionOptions} />
               </div>
             </section>
 
