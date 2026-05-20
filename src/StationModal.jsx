@@ -196,18 +196,10 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             color: '#38bdf8',
             stepSize: 45,
             callback: function(value) {
-              const directions = {
-                0: '北 (0°)',
-                45: '東北 (45°)',
-                90: '東 (90°)',
-                135: '東南 (135°)',
-                180: '南 (180°)',
-                225: '西南 (225°)',
-                270: '西 (270°)',
-                315: '西北 (315°)',
-                360: '北 (360°)'
-              };
-              return directions[value] || '';
+              if ([0, 45, 90, 135, 180, 225, 270, 315, 360].includes(value)) {
+                return `${value}°`;
+              }
+              return '';
             }
           },
           title: {
