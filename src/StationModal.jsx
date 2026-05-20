@@ -231,54 +231,95 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
   const extremes = station.extremes || {};
   const totalRain = chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
 
-  const { maxGustValue, maxGustIndex, isAvgWindPeak } = useMemo(() => {
-    // 1. 先嘗試尋找逐時瞬間風 (gust) 的最大值
+  // 1. 決定標記點的 Y 軸數值 (優先使用一日瞬間風速極值 extremes.wd7v，否則使用逐時陣風最大值)
+  const maxGustVal = useMemo(() => {
+    if (isValidValue(extremes.wd7v)) return Number(extremes.wd7v);
+
+    // 降級方案一：逐時瞬間風的最大值
     let maxVal = -1;
-    let maxIdx = -1;
-    chartData.series.gust.forEach((val, idx) => {
+    chartData.series.gust.forEach((val) => {
       if (val !== null && val !== undefined && val > maxVal) {
         maxVal = val;
-        maxIdx = idx;
       }
     });
+    if (maxVal !== -1) return maxVal;
 
-    if (maxVal !== -1) {
-      return {
-        maxGustValue: maxVal,
-        maxGustIndex: maxIdx,
-        isAvgWindPeak: false,
-      };
-    }
-
-    // 2. 若瞬間風皆為空（自動站），則以逐時平均風 (windAvg) 的最高峰為標記點
+    // 降級方案二：逐時平均風的最大值
     let maxAvgVal = -1;
-    let maxAvgIdx = -1;
-    chartData.series.windAvg.forEach((val, idx) => {
+    chartData.series.windAvg.forEach((val) => {
       if (val !== null && val !== undefined && val > maxAvgVal) {
         maxAvgVal = val;
-        maxAvgIdx = idx;
       }
     });
+    return maxAvgVal !== -1 ? maxAvgVal : null;
+  }, [extremes.wd7v, chartData]);
 
-    return {
-      maxGustValue: maxAvgVal !== -1 ? maxAvgVal : null,
-      maxGustIndex: maxAvgIdx,
-      isAvgWindPeak: true,
-    };
-  }, [chartData]);
+  // 2. 決定標記點的 X 軸索引 (藉由時間接近算法尋找與 extremes.wd7t 最貼近的 X 軸整點)
+  const maxGustIdx = useMemo(() => {
+    if (maxGustVal === null) return -1;
 
+    if (extremes.wd7t) {
+      const text = String(extremes.wd7t).padStart(6, '0'); // "DDHHMM"
+      const targetDay = Number(text.slice(0, 2));
+      const targetHour = Number(text.slice(2, 4));
+      const targetMin = Number(text.slice(4, 6));
+
+      let minDiff = Infinity;
+      let bestIdx = -1;
+
+      chartData.rows.forEach((row, idx) => {
+        const date = new Date(Number(row.epoch) * 1000);
+        const day = date.getDate();
+        const hour = date.getHours();
+        const min = date.getMinutes();
+
+        const diff = Math.abs((day - targetDay) * 24 * 60 + (hour - targetHour) * 60 + (min - targetMin));
+        if (diff < minDiff) {
+          minDiff = diff;
+          bestIdx = idx;
+        }
+      });
+
+      if (bestIdx !== -1) return bestIdx;
+    }
+
+    // 降級尋找：數值在逐時數據中匹配的 index
+    const gustIdx = chartData.series.gust.indexOf(maxGustVal);
+    if (gustIdx !== -1) return gustIdx;
+    const avgIdx = chartData.series.windAvg.indexOf(maxGustVal);
+    if (avgIdx !== -1) return avgIdx;
+
+    return chartData.labels.length ? Math.floor(chartData.labels.length / 2) : -1;
+  }, [maxGustVal, extremes.wd7t, chartData]);
+
+  // 3. 動態決定 Y 軸最大上限 (比紅點風速多 15% 的空間以放置標籤，避免被頂部遮擋)
+  const yAxisMax = useMemo(() => {
+    if (maxGustVal !== null) {
+      return Math.ceil(maxGustVal * 1.15);
+    }
+    return undefined;
+  }, [maxGustVal]);
+
+  // 4. 圖表專屬 options 設定
   const windChartOptions = useMemo(() => {
     const options = {
       ...commonOptions,
+      scales: {
+        ...commonOptions.scales,
+        y: {
+          ...commonOptions.scales.y,
+          max: yAxisMax,
+        }
+      }
     };
-    if (maxGustIndex !== -1 && maxGustValue !== null) {
-      const labelContent = isAvgWindPeak ? [
-        `最大瞬間風速: ${extremes.wd7v || '無資料'} m/s`,
-        `出現時間: ${formatExtremeTime(extremes.wd7t)}`,
-        `圖表平均風峰值: ${maxGustValue} m/s`
+
+    if (maxGustIdx !== -1 && maxGustVal !== null) {
+      const labelContent = extremes.wd7t ? [
+        `最大瞬間風速: ${maxGustVal} m/s`,
+        `時間: ${formatExtremeTime(extremes.wd7t)}`
       ] : [
-        `最大瞬間風速: ${maxGustValue} m/s`,
-        `時間: ${chartData.labels[maxGustIndex]}`
+        `最大瞬間風速: ${maxGustVal} m/s`,
+        `時間: ${chartData.labels[maxGustIdx]}`
       ];
 
       options.plugins = {
@@ -287,8 +328,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
           annotations: {
             maxGustPoint: {
               type: 'point',
-              xValue: chartData.labels[maxGustIndex],
-              yValue: maxGustValue,
+              xValue: chartData.labels[maxGustIdx],
+              yValue: maxGustVal,
               backgroundColor: '#ef4444',
               borderColor: '#ffffff',
               borderWidth: 2,
@@ -296,8 +337,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             },
             maxGustLabel: {
               type: 'label',
-              xValue: chartData.labels[maxGustIndex],
-              yValue: maxGustValue,
+              xValue: chartData.labels[maxGustIdx],
+              yValue: maxGustVal,
               backgroundColor: 'rgba(239, 68, 68, 0.95)',
               content: labelContent,
               font: { size: 9, weight: 'bold', family: 'Inter' },
@@ -312,7 +353,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
       };
     }
     return options;
-  }, [commonOptions, maxGustIndex, maxGustValue, isAvgWindPeak, chartData, extremes]);
+  }, [commonOptions, maxGustIdx, maxGustVal, yAxisMax, chartData, extremes]);
 
   const copyLink = async () => {
     const url = new URL(window.location.href);
