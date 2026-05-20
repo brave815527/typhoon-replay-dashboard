@@ -1,310 +1,395 @@
 import React, { useMemo } from 'react';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-  Filler
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
-import { Line, Bar } from 'react-chartjs-2';
-import { isValidValue } from './utils';
+import { Bar, Line } from 'react-chartjs-2';
+import { formatEpoch, getBeaufortLabel, getStationReading, isValidValue } from './dataAdapter.js';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-  annotationPlugin
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler, annotationPlugin);
 
-const StationModal = ({ stationId, data, onClose }) => {
-  if (!data || !stationId || !data.stations[stationId]) return null;
+const directionNames = ['北', '北北東', '東北', '東北東', '東', '東南東', '東南', '南南東', '南', '南南西', '西南', '西南西', '西', '西北西', '西北', '北北西'];
 
-  const station = data.stations[stationId];
-  const stName = station.n;
-  const extremes = station.extremes || {};
+function formatExtremeTime(value) {
+  if (!value || String(value).startsWith('-99')) return '無資料';
+  const text = String(value);
+  if (text.length === 8) return `${text.slice(4, 6)}/${text.slice(6, 8)}`;
+  const padded = text.padStart(6, '0');
+  return `${Number(padded.slice(0, 2))}日 ${padded.slice(2, 4)}:${padded.slice(4, 6)}`;
+}
 
-  const getWindDirCH = (deg) => {
-    if (!isValidValue(deg) || deg < 0 || deg > 360) return "";
-    const dirs = ["北", "北北東", "東北", "東北東", "東", "東南東", "東南", "南南東", "南", "南南西", "西南", "西南西", "西", "西北西", "西北", "北北西"];
-    const idx = Math.floor(((deg + 11.25) % 360) / 22.5);
-    return dirs[idx] + "風";
+function windDirectionText(deg) {
+  if (!isValidValue(deg) || deg < 0 || deg > 360) return '無資料';
+  const index = Math.floor(((deg + 11.25) % 360) / 22.5);
+  return `${directionNames[index]}風`;
+}
+
+function SummaryCard({ label, value, unit, sub, tone = 'cyan' }) {
+  const tones = {
+    cyan: 'bg-cyan-500/15 text-cyan-100 ring-cyan-400/30 hover:shadow-cyan-500/10',
+    red: 'bg-red-500/15 text-red-100 ring-red-400/30 hover:shadow-red-500/10',
+    blue: 'bg-blue-500/15 text-blue-100 ring-blue-400/30 hover:shadow-blue-500/10',
+    orange: 'bg-orange-500/15 text-orange-100 ring-orange-400/30 hover:shadow-orange-500/10',
   };
+  return (
+    <div className={`rounded-2xl p-4 ring-1 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${tones[tone]}`}>
+      <div className="mb-2 text-[11px] font-black tracking-wider opacity-70">{label}</div>
+      <div className="flex items-baseline gap-2">
+        <span className="font-display text-3xl font-black italic">{value ?? '-'}</span>
+        <span className="font-display text-xs font-bold opacity-80">{unit}</span>
+      </div>
+      <div className="mt-3 border-t border-white/10 pt-2 text-[11px] font-bold opacity-65">{sub}</div>
+    </div>
+  );
+}
 
-  const formatExTime = (t) => {
-    if (!t || String(t).startsWith("-99")) return "";
-    const s = String(t);
-    if (s.length === 8) return `${s.slice(4,6)}/${s.slice(6,8)}`;
-    const ps = s.padStart(6, '0');
-    return `${parseInt(ps.slice(0, 2))}日 ${ps.slice(2, 4)}:${ps.slice(4, 6)}`;
-  };
-
+const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
+  const station = event?.stations?.[stationId] || null;
   const chartData = useMemo(() => {
-    const epochs = Object.keys(data.hourlyData).sort((a, b) => Number(a) - Number(b));
+    if (!event || !stationId) return null;
     const labels = [];
-    const parsedData = { windSpeed: [], windGust: [], windDir: [], temp: [], pressure: [], precip: [], humidity: [] };
-    const dateMapping = []; // Used for faster lookup in annotations
+    const series = { windAvg: [], gust: [], windDir: [], temp: [], humidity: [], pressure: [], precip: [] };
+    const rows = [];
 
-    epochs.forEach(ep => {
-      const vals = data.hourlyData[ep][stationId];
-      if (vals) {
-        const date = new Date(Number(ep) * 1000);
-        const day = date.getDate();
-        const hour = date.getHours();
-        
-        labels.push(`${String(date.getMonth() + 1).padStart(2,'0')}/${String(day).padStart(2,'0')} ${String(hour).padStart(2,'0')}:00`);
-        dateMapping.push({ day, hour });
-
-        parsedData.windSpeed.push(isValidValue(vals[0]) ? vals[0] : null);
-        parsedData.windDir.push(isValidValue(vals[1]) ? vals[1] : null);
-        parsedData.windGust.push(isValidValue(vals[2]) ? vals[2] : null);
-        parsedData.temp.push(isValidValue(vals[4]) ? vals[4] : null);
-        parsedData.humidity.push(isValidValue(vals[5]) ? vals[5] : null);
-        parsedData.pressure.push(isValidValue(vals[6]) ? vals[6] : null);
-        parsedData.precip.push(isValidValue(vals[7]) ? vals[7] : null);
-      }
+    event.epochs.forEach((epoch) => {
+      const reading = getStationReading(event.hourlyByEpoch[epoch]?.[stationId]);
+      if (!event.hourlyByEpoch[epoch]?.[stationId]) return;
+      labels.push(formatEpoch(epoch));
+      Object.keys(series).forEach((key) => series[key].push(reading[key]));
+      rows.push({ epoch, ...reading });
     });
 
-    const findLabelIdx = (exTime) => {
-      if (!exTime || String(exTime).startsWith("-99")) return -1;
-      const ps = String(exTime).padStart(6, '0');
-      const targetDay = parseInt(ps.slice(0, 2));
-      const targetHour = parseInt(ps.slice(2, 4));
-      return dateMapping.findIndex(m => m.day === targetDay && m.hour === targetHour);
-    };
+    return { labels, series, rows };
+  }, [event, stationId]);
 
-    return { labels, ...parsedData, findLabelIdx };
-  }, [data, stationId]);
 
-  const commonOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: { mode: 'index', intersect: false },
-    plugins: {
-      legend: { display: false },
-      tooltip: { 
-        backgroundColor: 'rgba(0,0,0,0.9)', 
-        padding: 12, 
-        cornerRadius: 8,
-        titleFont: { size: 14 }
+  const commonOptions = useMemo(() => {
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: 'rgba(255,255,255,0.65)' } },
+        tooltip: { backgroundColor: 'rgba(0,0,0,0.9)', padding: 12, cornerRadius: 8 },
       },
-    },
-    scales: {
-      x: { 
-        grid: { color: 'rgba(255,255,255,0.03)' }, 
-        ticks: { 
-          color: 'rgba(255,255,255,0.6)', 
-          font: { size: 12, weight: 'bold' },
-          callback: function(val, index) {
-            const label = this.getLabelForValue(val);
-            if (!label) return '';
-            const parts = label.split(' ');
-            if (parts.length < 2) return '';
-            const t = parts[1].split(':')[0];
-            if (["00", "06", "12", "18"].includes(t)) {
-              return t === "00" ? [t, parts[0]] : t;
-            }
-            return '';
+      scales: {
+        x: {
+          grid: {
+            color: function (context) {
+              const chart = context.chart;
+              const index = context.index;
+              if (chart && chart.data && chart.data.labels) {
+                const label = chart.data.labels[index];
+                if (label) {
+                  const parts = label.split(/\s+/);
+                  if (parts.length === 2) {
+                    const time = parts[1];
+                    if (['00:00', '06:00', '12:00', '18:00'].includes(time)) {
+                      return 'rgba(255, 255, 255, 0.05)';
+                    }
+                  }
+                }
+              }
+              return 'transparent';
+            },
+            tickColor: function (context) {
+              const chart = context.chart;
+              const index = context.index;
+              if (chart && chart.data && chart.data.labels) {
+                const label = chart.data.labels[index];
+                if (label) {
+                  const parts = label.split(/\s+/);
+                  if (parts.length === 2) {
+                    const time = parts[1];
+                    if (['00:00', '06:00', '12:00', '18:00'].includes(time)) {
+                      return 'rgba(255, 255, 255, 0.2)';
+                    }
+                  }
+                }
+              }
+              return 'transparent';
+            },
           },
-          autoSkip: false,
-          maxRotation: 0
-        } 
+          ticks: {
+            color: 'rgba(255,255,255,0.55)',
+            maxRotation: 0,
+            autoSkip: false,
+            callback: function (value) {
+              const label = this.getLabelForValue(value);
+              if (!label) return '';
+              const parts = label.split(/\s+/);
+              if (parts.length === 2) {
+                const [date, time] = parts;
+                if (time === '00:00') {
+                  return ['00', date];
+                }
+                if (['06:00', '12:00', '18:00'].includes(time)) {
+                  return time.slice(0, 2);
+                }
+              }
+              return '';
+            },
+          },
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: 'rgba(255,255,255,0.55)' },
+        },
       },
-      y: { 
-        grid: { color: 'rgba(255,255,255,0.08)' }, 
-        ticks: { color: 'rgba(255,255,255,0.6)', font: { size: 12 } } 
-      }
-    }
-  };
-
-  const createAnnPoint = (idx, value, color) => {
-    if (idx < 0) return null;
-    return {
-      type: 'point',
-      xValue: idx,
-      yValue: value,
-      backgroundColor: color,
-      borderColor: '#fff',
-      borderWidth: 2,
-      radius: 6,
-      hoverRadius: 8
     };
+
+    return options;
+  }, []);
+
+  const tempHumidityOptions = useMemo(() => {
+    return {
+      ...commonOptions,
+      scales: {
+        ...commonOptions.scales,
+        y: {
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { color: '#fb923c' },
+          title: {
+            display: true,
+            text: '溫度 (°C)',
+            color: '#fb923c',
+            font: { size: 10, weight: 'bold' }
+          }
+        },
+        y1: {
+          type: 'linear',
+          position: 'right',
+          grid: { drawOnChartArea: false },
+          ticks: { color: '#34d399' },
+          min: 0,
+          max: 100,
+          title: {
+            display: true,
+            text: '濕度 (%)',
+            color: '#34d399',
+            font: { size: 10, weight: 'bold' }
+          }
+        }
+      }
+    };
+  }, [commonOptions]);
+
+  if (!station || !chartData) return null;
+
+  const extremes = station.extremes || {};
+  const totalRain = chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
+
+  const copyLink = async () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('station', stationId);
+    await navigator.clipboard.writeText(url.toString());
   };
 
-  const chartSections = [
-    {
-      title: "風速與陣風 (m/s)",
-      color: "text-red-400",
-      content: <Line data={{
-        labels: chartData.labels,
-        datasets: [
-          { label: '平均', data: chartData.windSpeed, borderColor: 'rgba(0,229,255,0.6)', backgroundColor: 'rgba(0,229,255,0.05)', fill: true, tension: 0.4, pointRadius: 0 },
-          { label: '瞬間', data: chartData.windGust, borderColor: '#EF4444', borderDash: [5, 5], tension: 0.4, pointRadius: 0 }
-        ]
-      }} options={{
-        ...commonOptions,
-        plugins: {
-          ...commonOptions.plugins,
-          annotation: {
-            annotations: {
-              gust: createAnnPoint(chartData.findLabelIdx(extremes.wd7t), extremes.wd7v, '#EF4444')
-            }
-          }
-        }
-      }} />,
-      extremes: [
-        { label: "最大瞬間風速", value: extremes.wd7v, unit: "m/s", sub: `${getWindDirCH(extremes.wd7d)} (${formatExTime(extremes.wd7t)})`, color: "bg-error/30 text-error ring-1 ring-error/50" }
-      ]
-    },
-    {
-      title: "風向 (°)",
-      color: "text-purple-400",
-      content: <Line data={{
-        labels: chartData.labels,
-        datasets: [{ data: chartData.windDir, borderColor: '#A855F7', showLine: false, pointRadius: 3, pointBackgroundColor: '#A855F7' }]
-      }} options={{...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 360, ticks: { stepSize: 90, font: { size: 12 } } } }}} />
-    },
-    {
-      title: "氣壓 (hPa)",
-      color: "text-blue-400",
-      content: <Line data={{
-        labels: chartData.labels,
-        datasets: [{ data: chartData.pressure, borderColor: '#3B82F6', tension: 0.4, pointRadius: 0 }]
-      }} options={{
-        ...commonOptions,
-        plugins: {
-          ...commonOptions.plugins,
-          annotation: {
-            annotations: {
-              maxP: createAnnPoint(chartData.findLabelIdx(extremes.ps3t), extremes.ps3v, '#818CF8'),
-              minP: createAnnPoint(chartData.findLabelIdx(extremes.ps5t), extremes.ps5v, '#3B82F6')
-            }
-          }
-        }
-      }} />,
-      extremes: [
-        { label: "最高氣壓", value: extremes.ps3v, unit: "hPa", sub: formatExTime(extremes.ps3t), color: "bg-indigo-500/30 text-indigo-200 ring-1 ring-indigo-500/50" },
-        { label: "最低氣壓", value: extremes.ps5v, unit: "hPa", sub: formatExTime(extremes.ps5t), color: "bg-blue-600/30 text-blue-100 ring-1 ring-blue-500/50" }
-      ]
-    },
-    {
-      title: "雨量 (mm)",
-      color: "text-sky-400",
-      content: <Bar data={{
-        labels: chartData.labels,
-        datasets: [{ data: chartData.precip, backgroundColor: '#38BDF8', borderRadius: 2 }]
-      }} options={commonOptions} />,
-      extremes: [
-        ...(extremes.pp1v !== undefined && extremes.pp1v !== null ? [
-          { label: "最大日累計雨量", value: extremes.pp1v, unit: "mm", sub: formatExTime(extremes.pp1t), color: "bg-sky-500/30 text-sky-200 ring-1 ring-sky-400/50" }
-        ] : []),
-        { 
-          label: "觀測期間總雨量", 
-          value: chartData.precip.reduce((sum, v) => sum + (v || 0), 0).toFixed(1), 
-          unit: "mm", 
-          sub: "Total Cumulative", 
-          color: "bg-blue-600/30 text-blue-100 ring-1 ring-blue-500/50" 
-        }
-      ]
-    },
-    {
-      title: "溫度 (°C)",
-      color: "text-orange-400",
-      content: <Line data={{
-        labels: chartData.labels,
-        datasets: [{ data: chartData.temp, borderColor: '#F97316', backgroundColor: 'rgba(249,115,22,0.1)', fill: true, tension: 0.4, pointRadius: 0 }]
-      }} options={{
-        ...commonOptions,
-        plugins: {
-          ...commonOptions.plugins,
-          annotation: {
-            annotations: {
-              maxT: createAnnPoint(chartData.findLabelIdx(extremes.tx2t), extremes.tx2v, '#F97316'),
-              minT: createAnnPoint(chartData.findLabelIdx(extremes.tx4t), extremes.tx4v, '#3B82F6')
-            }
-          }
-        }
-      }} />,
-      extremes: [
-        { label: "最高溫度", value: extremes.tx2v, unit: "°C", sub: formatExTime(extremes.tx2t), color: "bg-orange-500/30 text-orange-200 ring-1 ring-orange-400/50" },
-        { label: "最低溫度", value: extremes.tx4v, unit: "°C", sub: formatExTime(extremes.tx4t), color: "bg-blue-500/30 text-blue-100 ring-1 ring-blue-400/50" }
-      ]
-    },
-    {
-      title: "濕度 (%)",
-      color: "text-emerald-400",
-      content: <Line data={{
-        labels: chartData.labels,
-        datasets: [{ data: chartData.humidity, borderColor: '#10B981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.4, pointRadius: 0 }]
-      }} options={{...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 100, ticks: { font: { size: 12 } } } }}} />
-    }
-  ];
+  const exportCsv = () => {
+    const header = 'epoch,time,windAvg,windDir,gust,gustDir,temp,humidity,pressure,precip\n';
+    const body = chartData.rows.map((row) => [
+      row.epoch,
+      formatEpoch(row.epoch),
+      row.windAvg ?? '',
+      row.windDir ?? '',
+      row.gust ?? '',
+      row.gustDir ?? '',
+      row.temp ?? '',
+      row.humidity ?? '',
+      row.pressure ?? '',
+      row.precip ?? '',
+    ].join(',')).join('\n');
+    const blob = new Blob([header + body], { type: 'text/csv;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${event.metadata.year}-${event.metadata.name}-${stationId}.csv`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
 
   return (
     <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md" onClick={onClose} />
-      <div className="relative w-full max-w-5xl max-h-[94vh] bg-[#0A0A0A] border border-white/10 rounded-3xl shadow-4xl flex flex-col overflow-hidden">
-        
-        <div className="p-5 md:p-6 border-b border-white/5 flex justify-between items-center bg-white/2">
-          <div className="flex items-center gap-5">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center border border-cyan-500/30">
-              <span className="text-cyan-400 text-2xl font-black italic">ST</span>
-            </div>
-            <div>
-              <h2 className="text-2xl font-black text-white tracking-tighter">{stName}</h2>
-              <p className="text-[11px] text-white/50 uppercase tracking-[0.3em] font-black">Station Analytical Metrics</p>
+      <button className="absolute inset-0 bg-black/70 backdrop-blur-md" onClick={onClose} aria-label="關閉測站視窗" type="button" />
+      <div className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0A0A0A]/90 backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] p-5 md:p-6">
+          <div className="flex min-w-0 items-center gap-4">
+            <div className="font-display flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-500/20 text-2xl font-black italic text-cyan-300">ST</div>
+            <div className="min-w-0">
+              <h2 className="truncate text-2xl font-black text-white">{station.name}</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.25em] text-white/50">{station.type === 'manual' ? '署屬站' : '自動站'} · <span className="font-display font-black">{stationId}</span></p>
             </div>
           </div>
-          <button onClick={onClose} className="p-3 hover:bg-white/10 rounded-2xl transition-all border border-transparent hover:border-white/10 text-white/40 hover:text-white">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={copyLink} className="rounded-xl bg-white/10 px-3 py-2 text-xs font-bold text-white hover:bg-white/15" title="複製此測站連結">複製連結</button>
+            <button type="button" onClick={exportCsv} className="rounded-xl bg-cyan-400 px-3 py-2 text-xs font-bold text-slate-950 hover:bg-cyan-300" title="匯出此測站逐時 CSV">匯出 CSV</button>
+            <button type="button" onClick={onClose} className="rounded-2xl p-3 text-white/50 transition hover:bg-white/10 hover:text-white" aria-label="關閉">
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 md:px-10 md:py-8 custom-scrollbar touch-pan-y overscroll-contain">
-          <div className="flex flex-col gap-14">
-            {chartSections.map((section, idx) => {
-              const hasExtremes = section.extremes && section.extremes.length > 0;
-              return (
-                <div key={idx} className="group relative">
-                  <div className="flex items-center gap-6 mb-8">
-                    <h3 className={`text-sm md:text-base font-black uppercase tracking-[0.25em] ${section.color}`}>{section.title}</h3>
-                    <div className="flex-1 h-[2px] bg-gradient-to-r from-white/10 to-transparent"></div>
-                  </div>
-
-                  {hasExtremes && (
-                    <div className="flex flex-wrap gap-4 mb-8">
-                      {section.extremes.map((ex, i) => (
-                        <div key={i} className={`px-5 py-4 rounded-2xl border border-white/5 ${ex.color} flex flex-col shadow-xl transition-all hover:translate-y-[-2px]`}>
-                          <div className="text-[11px] opacity-70 font-black mb-2 uppercase tracking-tighter">{ex.label}</div>
-                          <div className="flex items-baseline gap-2">
-                            <span className="text-3xl font-black italic tracking-tighter leading-none">{ex.value}</span>
-                            <span className="text-[13px] opacity-90 font-black">{ex.unit}</span>
-                          </div>
-                          {ex.sub && <div className="text-[11px] opacity-60 mt-3 font-bold font-mono border-t border-white/10 pt-2">{ex.sub}</div>}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="h-64 md:h-80 w-full relative bg-white/[0.01] rounded-[2rem] p-6 border border-white/5 shadow-2xl">
-                    {section.content}
-                  </div>
-                </div>
-              );
-            })}
+        <div className="flex-1 overflow-y-auto p-5 md:px-10 md:py-8">
+          <div className="mb-10 grid gap-4 md:grid-cols-4">
+            <SummaryCard label="最大瞬間風速" value={extremes.wd7v} unit="m/s" sub={`${windDirectionText(extremes.wd7d)} (${formatExtremeTime(extremes.wd7t)}) · ${getBeaufortLabel(extremes.wd7v)}`} tone="red" />
+            <SummaryCard label="最低氣壓" value={extremes.ps5v} unit="hPa" sub={formatExtremeTime(extremes.ps5t)} tone="blue" />
+            <SummaryCard label="最大日雨量" value={extremes.pp1v} unit="mm" sub={formatExtremeTime(extremes.pp1t)} tone="cyan" />
+            <SummaryCard label="觀測總雨量" value={totalRain} unit="mm" sub="此事件逐時累計" tone="orange" />
           </div>
-          <div className="h-10"></div>
+
+          <div className="space-y-12">
+            <section>
+              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-red-300">風速與陣風 (m/s)</h3>
+              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+                <Line data={{
+                  labels: chartData.labels,
+                  datasets: [
+                    {
+                      label: '平均風',
+                      data: chartData.series.windAvg,
+                      borderColor: '#06b6d4',
+                      backgroundColor: (context) => {
+                        const chart = context.chart;
+                        const { ctx, chartArea } = chart;
+                        if (!chartArea) return 'rgba(6, 182, 212, 0.08)';
+                        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                        gradient.addColorStop(0, 'rgba(6, 182, 212, 0.25)');
+                        gradient.addColorStop(1, 'rgba(6, 182, 212, 0.0)');
+                        return gradient;
+                      },
+                      fill: true,
+                      tension: 0.35,
+                      pointRadius: 0,
+                    },
+                    {
+                      label: '瞬間風',
+                      data: chartData.series.gust,
+                      showLine: false,
+                      pointRadius: 3.5,
+                      pointBackgroundColor: '#fb923c',
+                      pointBorderColor: '#fb923c',
+                      pointHoverRadius: 6,
+                      pointHoverBackgroundColor: '#ffffff',
+                      pointHoverBorderColor: '#fb923c',
+                      pointHoverBorderWidth: 2,
+                    },
+                  ],
+                }} options={commonOptions} />
+              </div>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-sky-300">雨量 (mm)</h3>
+              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+                <Bar data={{
+                  labels: chartData.labels,
+                  datasets: [{
+                    label: '逐時雨量',
+                    data: chartData.series.precip,
+                    backgroundColor: (context) => {
+                      const chart = context.chart;
+                      const { ctx, chartArea } = chart;
+                      if (!chartArea) return '#38bdf8';
+                      const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                      gradient.addColorStop(0, '#38bdf8');
+                      gradient.addColorStop(1, '#0284c7');
+                      return gradient;
+                    },
+                    borderRadius: 4,
+                  }],
+                }} options={commonOptions} />
+              </div>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-blue-300">氣壓 (hPa)</h3>
+              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+                <Line data={{
+                  labels: chartData.labels,
+                  datasets: [{
+                    label: '氣壓',
+                    data: chartData.series.pressure,
+                    borderColor: '#60a5fa',
+                    backgroundColor: (context) => {
+                      const chart = context.chart;
+                      const { ctx, chartArea } = chart;
+                      if (!chartArea) return 'rgba(96, 165, 250, 0.05)';
+                      const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                      gradient.addColorStop(0, 'rgba(96, 165, 250, 0.15)');
+                      gradient.addColorStop(1, 'rgba(96, 165, 250, 0.0)');
+                      return gradient;
+                    },
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: 0,
+                  }]
+                }} options={commonOptions} />
+              </div>
+            </section>
+
+            <section>
+              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-orange-300">溫度與濕度</h3>
+              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+                <Line data={{
+                  labels: chartData.labels,
+                  datasets: [
+                    {
+                      label: '溫度 °C',
+                      data: chartData.series.temp,
+                      borderColor: '#fb923c',
+                      backgroundColor: (context) => {
+                        const chart = context.chart;
+                        const { ctx, chartArea } = chart;
+                        if (!chartArea) return 'rgba(251, 146, 60, 0.03)';
+                        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                        gradient.addColorStop(0, 'rgba(251, 146, 60, 0.1)');
+                        gradient.addColorStop(1, 'rgba(251, 146, 60, 0.0)');
+                        return gradient;
+                      },
+                      fill: true,
+                      tension: 0.35,
+                      pointRadius: 0,
+                      pointHoverRadius: 5,
+                      pointHoverBackgroundColor: '#ffffff',
+                      pointHoverBorderColor: '#fb923c',
+                      pointHoverBorderWidth: 2,
+                      yAxisID: 'y',
+                    },
+                    {
+                      label: '濕度 %',
+                      data: chartData.series.humidity,
+                      borderColor: '#34d399',
+                      backgroundColor: (context) => {
+                        const chart = context.chart;
+                        const { ctx, chartArea } = chart;
+                        if (!chartArea) return 'rgba(52, 211, 153, 0.03)';
+                        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                        gradient.addColorStop(0, 'rgba(52, 211, 153, 0.08)');
+                        gradient.addColorStop(1, 'rgba(52, 211, 153, 0.0)');
+                        return gradient;
+                      },
+                      fill: true,
+                      tension: 0.35,
+                      pointRadius: 0,
+                      pointHoverRadius: 5,
+                      pointHoverBackgroundColor: '#ffffff',
+                      pointHoverBorderColor: '#34d399',
+                      pointHoverBorderWidth: 2,
+                      yAxisID: 'y1',
+                    },
+                  ],
+                }} options={tempHumidityOptions} />
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>

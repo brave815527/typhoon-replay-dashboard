@@ -1,14 +1,9 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-console.log("main.jsx loaded");
 const rootElement = document.getElementById('root');
-if (!rootElement) {
-  console.error("Root element not found!");
-} else {
-  console.log("Root element found, rendering App...");
+if (rootElement) {
   createRoot(rootElement).render(
     <App />
   );

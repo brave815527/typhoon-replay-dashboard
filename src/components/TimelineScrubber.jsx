@@ -1,104 +1,132 @@
 import React from 'react';
+import { formatEpoch } from '../dataAdapter.js';
 
-const TimelineScrubber = ({ 
-  epochs, 
-  currentTimeIndex, 
-  setCurrentTimeIndex, 
-  isPlaying, 
-  setIsPlaying, 
-  playbackSpeed, 
-  setPlaybackSpeed 
+const TimelineScrubber = ({
+  epochs,
+  currentTimeIndex,
+  setCurrentTimeIndex,
+  isPlaying,
+  setIsPlaying,
+  playbackSpeed,
+  setPlaybackSpeed,
+  jumpToPeak,
 }) => {
   const currentEpoch = epochs[currentTimeIndex];
+  const progress = (currentTimeIndex / Math.max(1, epochs.length - 1)) * 100;
+  const tickIndexes = [0, 0.25, 0.5, 0.75, 1]
+    .map((ratio) => Math.round(ratio * Math.max(0, epochs.length - 1)))
+    .filter((value, index, array) => array.indexOf(value) === index);
 
-  // Handle wheel events
-  const handleWheel = (e) => {
-    // DeltaY > 0 is scrolling down (forward time)
-    if (e.deltaY > 0) {
-      setCurrentTimeIndex(prev => Math.min(prev + 1, epochs.length - 1));
-    } else if (e.deltaY < 0) {
-      setCurrentTimeIndex(prev => Math.max(prev - 1, 0));
-    }
+  const handleWheel = (event) => {
+    setCurrentTimeIndex((prev) => event.deltaY > 0 ? Math.min(prev + 1, epochs.length - 1) : Math.max(prev - 1, 0));
   };
 
-  // Handle drag/touch interaction
-  const handleInteraction = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    // Use clientX directly from PointerEvent
-    const clientX = e.clientX;
-    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-    const newIndex = Math.floor(ratio * (epochs.length - 1));
-    if (newIndex >= 0 && newIndex < epochs.length) {
-      setCurrentTimeIndex(newIndex);
-    }
+  const handleInteraction = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    setCurrentTimeIndex(Math.floor(ratio * (epochs.length - 1)));
   };
 
-  const handlePointerDown = (e) => {
-    e.currentTarget.setPointerCapture(e.pointerId);
-    handleInteraction(e);
+  const handlePointerDown = (event) => {
+    event.currentTarget.setPointerCapture(event.pointerId);
+    handleInteraction(event);
   };
 
-  const handlePointerMove = (e) => {
-    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
-      handleInteraction(e);
-    }
-  };
-
-  const handlePointerUp = (e) => {
-    e.currentTarget.releasePointerCapture(e.pointerId);
+  const handlePointerMove = (event) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) handleInteraction(event);
   };
 
   return (
-    <div 
-      className="fixed bottom-0 w-full z-50 flex justify-center items-center gap-2 md:gap-12 px-4 md:px-12 h-20 bg-slate-950/90 backdrop-blur-md border-t border-cyan-500/20 select-none"
+    <div
+      className="fixed bottom-0 z-50 flex h-24 w-full select-none items-center justify-center gap-2 border-t border-white/5 bg-[#030712]/90 px-4 backdrop-blur-xl md:h-24 md:gap-8 md:px-12"
       onWheel={handleWheel}
     >
-      <div className="absolute -top-6 left-0 w-full px-4 md:px-24">
-        <div 
-          className="relative w-full h-12 flex items-center cursor-pointer touch-none" 
+      <div className="absolute -top-8 left-0 w-full px-4 md:px-24">
+        <div
+          className="relative flex h-14 w-full cursor-pointer touch-none items-center"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
+          onPointerUp={(event) => event.currentTarget.releasePointerCapture(event.pointerId)}
+          onPointerCancel={(event) => event.currentTarget.releasePointerCapture(event.pointerId)}
+          role="slider"
+          aria-label="回放時間軸"
+          aria-valuemin={0}
+          aria-valuemax={Math.max(0, epochs.length - 1)}
+          aria-valuenow={currentTimeIndex}
         >
-          <div className="absolute w-full h-1.5 bg-outline-variant/40 rounded-full"></div>
-          <div className="absolute h-1.5 bg-secondary rounded-full" style={{ width: `${(currentTimeIndex / Math.max(1, epochs.length - 1)) * 100}%` }}></div>
-          
-          <div 
-            className="absolute w-6 h-6 md:w-3 md:h-6 bg-secondary rounded md:rounded-sm -ml-3 md:-ml-1.5 shadow-[0_0_12px_rgba(68,226,205,0.6)] cursor-grab" 
-            style={{ left: `${(currentTimeIndex / Math.max(1, epochs.length - 1)) * 100}%` }}
+          <div className="absolute h-1.5 w-full rounded-full bg-outline-variant/40" />
+          <div className="absolute h-1.5 rounded-full bg-secondary" style={{ width: `${progress}%` }} />
+          {tickIndexes.map((index) => (
+            <div
+              key={index}
+              className="absolute top-7 hidden -translate-x-1/2 text-[10px] font-bold text-slate-500 sm:block"
+              style={{ left: `${(index / Math.max(1, epochs.length - 1)) * 100}%` }}
+            >
+              {formatEpoch(epochs[index], { minute: undefined })}
+            </div>
+          ))}
+          <div
+            className="absolute -ml-3 h-7 w-6 cursor-grab rounded bg-secondary shadow-[0_0_12px_rgba(68,226,205,0.6)] md:-ml-1.5 md:h-7 md:w-3"
+            style={{ left: `${progress}%` }}
           >
-             <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 bg-slate-900/90 text-cyan-200 text-[11px] px-3 py-1.5 rounded-lg border border-cyan-500/30 whitespace-nowrap shadow-xl">
-                {new Date(Number(currentEpoch) * 1000).toLocaleString('zh-TW', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}
-             </div>
+            <div className="absolute bottom-full left-1/2 mb-4 -translate-x-1/2 whitespace-nowrap rounded-lg border border-white/5 bg-[#030712]/90 px-3 py-1.5 text-[11px] text-cyan-100 shadow-2xl backdrop-blur-xl">
+              {formatEpoch(currentEpoch)}
+            </div>
           </div>
         </div>
       </div>
 
-      <button className="flex flex-col items-center justify-center text-slate-400 p-2" onClick={() => setCurrentTimeIndex(0)}>
+      <button
+        type="button"
+        className="flex items-center justify-center rounded-full p-2 text-slate-400 transition hover:bg-white/10 hover:text-white"
+        onClick={() => setCurrentTimeIndex(0)}
+        aria-label="回到開始"
+        title="回到開始"
+      >
         <span className="material-symbols-outlined">fast_rewind</span>
       </button>
       <button
-        className="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_8px_rgba(68,226,205,0.5)] hover:scale-110 active:scale-95 transition-all w-14 h-14 md:w-16 md:h-16"
+        type="button"
+        className="flex h-14 w-14 items-center justify-center rounded-full text-cyan-300 drop-shadow-[0_0_8px_rgba(68,226,205,0.5)] transition hover:scale-105 hover:bg-white/5 active:scale-95 md:h-16 md:w-16"
         onClick={() => setIsPlaying(!isPlaying)}
+        aria-label={isPlaying ? '暫停播放' : '播放回放'}
+        title={isPlaying ? '暫停播放' : '播放回放'}
       >
         <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>{isPlaying ? 'pause' : 'play_arrow'}</span>
       </button>
-      <button className="flex flex-col items-center justify-center text-slate-400 p-2" onClick={() => setCurrentTimeIndex(epochs.length - 1)}>
+      <button
+        type="button"
+        className="flex items-center justify-center rounded-full p-2 text-slate-400 transition hover:bg-white/10 hover:text-white"
+        onClick={() => setCurrentTimeIndex(epochs.length - 1)}
+        aria-label="跳到結束"
+        title="跳到結束"
+      >
         <span className="material-symbols-outlined">fast_forward</span>
       </button>
-
-      <div className="flex bg-white/5 border border-white/10 rounded-full px-1.5 py-1 gap-1 ml-2 md:ml-4">
-         {[1, 2, 4].map(s => (
-           <button 
-             key={s}
-             onClick={() => setPlaybackSpeed(s)}
-             className={`text-[9px] md:text-[10px] font-bold w-7 h-6 md:w-10 md:h-6 rounded-full transition-colors ${playbackSpeed === s ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
-           >
-             {s}x
-           </button>
-         ))}
-       </div>
+      <button
+        type="button"
+        className="hidden rounded-full bg-white/5 px-3 py-2 text-[11px] font-bold text-slate-300 transition hover:bg-white/10 md:block"
+        onClick={jumpToPeak}
+        title="跳到中心風力最強時刻"
+      >
+        最強時刻
+      </button>
+      <div className="flex rounded-full border border-white/10 bg-white/5 px-1.5 py-1">
+        {[1, 2, 4].map((speed) => (
+          <button
+            type="button"
+            key={speed}
+            onClick={() => setPlaybackSpeed(speed)}
+            className={`h-6 w-8 rounded-full text-[10px] font-bold transition md:w-10 ${playbackSpeed === speed ? 'bg-cyan-400 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+            aria-label={`${speed} 倍速`}
+          >
+            {speed}x
+          </button>
+        ))}
+      </div>
+      <div className="hidden text-[11px] font-medium text-slate-500 md:block">
+        Space 播放 · ←/→ 單步 · 滾輪調整時間
+      </div>
     </div>
   );
 };
