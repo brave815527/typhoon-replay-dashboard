@@ -301,6 +301,10 @@ function App() {
             currentTimeIndex={state.currentTimeIndex}
             selectedYear={state.selectedYear}
             rankings={rankings}
+            rankingMetric={state.rankingMetric}
+            setRankingMetric={(metric) => dispatch({ type: 'SET_RANKING_METRIC', metric })}
+            stationType={state.stationType}
+            setStationType={(stationType) => dispatch({ type: 'SET_STATION_TYPE', stationType })}
             activeMobilePanel={state.activeMobilePanel}
             setActiveMobilePanel={(panel) => dispatch({ type: 'SET_MOBILE_PANEL', panel })}
             setSelectedStation={(stationId) => dispatch({ type: 'SET_STATION', stationId })}

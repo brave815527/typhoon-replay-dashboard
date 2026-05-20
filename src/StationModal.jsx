@@ -436,38 +436,59 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[2000] flex items-end md:items-center justify-center p-0 md:p-4">
       <button className="absolute inset-0 bg-black/70 backdrop-blur-md" onClick={onClose} aria-label="關閉測站視窗" type="button" />
-      <div className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0A0A0A]/90 backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-        <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] p-5 md:p-6">
-          <div className="flex min-w-0 items-center gap-4">
-            <div className="font-display flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-500/20 text-2xl font-black italic text-cyan-300">ST</div>
+      <div className="relative flex h-[85vh] md:h-auto max-h-[88vh] md:max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-t-[2rem] md:rounded-3xl border-t border-x md:border border-white/10 bg-[#0A0A0A]/90 backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] p-4 md:p-6">
+          <div className="flex min-w-0 items-center gap-3 md:gap-4">
+            <div className="font-display flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-500/20 text-xl md:text-2xl font-black italic text-cyan-300">ST</div>
             <div className="min-w-0">
-              <h2 className="truncate text-2xl font-black text-white">{station.name}</h2>
-              <p className="text-[11px] font-black uppercase tracking-[0.25em] text-white/50">{station.type === 'manual' ? '署屬站' : '自動站'} · <span className="font-display font-black">{stationId}</span></p>
+              <h2 className="truncate text-lg md:text-2xl font-black text-white">{station.name}</h2>
+              <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-white/50">{station.type === 'manual' ? '署屬站' : '自動站'} · <span className="font-display font-black">{stationId}</span></p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <button type="button" onClick={copyLink} className="rounded-xl bg-white/10 px-3 py-2 text-xs font-bold text-white hover:bg-white/15" title="複製此測站連結">複製連結</button>
-            <button type="button" onClick={exportCsv} className="rounded-xl bg-cyan-400 px-3 py-2 text-xs font-bold text-slate-950 hover:bg-cyan-300" title="匯出此測站逐時 CSV">匯出 CSV</button>
-            <button type="button" onClick={onClose} className="rounded-2xl p-3 text-white/50 transition hover:bg-white/10 hover:text-white" aria-label="關閉">
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <button
+              type="button"
+              onClick={copyLink}
+              className="flex h-9 items-center justify-center rounded-xl bg-white/10 px-3 py-2 text-xs font-bold text-white hover:bg-white/15"
+              title="複製此測站連結"
+            >
+              <span className="material-symbols-outlined text-sm md:hidden">link</span>
+              <span className="hidden md:inline">複製連結</span>
+            </button>
+            <button
+              type="button"
+              onClick={exportCsv}
+              className="flex h-9 items-center justify-center rounded-xl bg-cyan-400 px-3 py-2 text-xs font-bold text-slate-950 hover:bg-cyan-300"
+              title="匯出此測站逐時 CSV"
+            >
+              <span className="material-symbols-outlined text-sm md:hidden">download</span>
+              <span className="hidden md:inline">匯出 CSV</span>
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-2xl p-2 text-white/50 transition hover:bg-white/10 hover:text-white"
+              aria-label="關閉"
+            >
               <span className="material-symbols-outlined">close</span>
             </button>
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-5 md:px-10 md:py-8">
-          <div className="mb-10 grid gap-4 md:grid-cols-4">
+        <div className="flex-1 overflow-y-auto p-4 md:px-10 md:py-8">
+          <div className="mb-6 grid grid-cols-2 gap-3 md:mb-10 md:grid-cols-4 md:gap-4">
             <SummaryCard label="最大瞬間風速" value={extremes.wd7v} unit="m/s" sub={`${windDirectionText(extremes.wd7d)} (${formatExtremeTime(extremes.wd7t)}) · ${getBeaufortLabel(extremes.wd7v)}`} tone="red" />
             <SummaryCard label="最低氣壓" value={extremes.ps5v} unit="hPa" sub={formatExtremeTime(extremes.ps5t)} tone="blue" />
             <SummaryCard label="最大日雨量" value={extremes.pp1v} unit="mm" sub={formatExtremeTime(extremes.pp1t)} tone="cyan" />
             <SummaryCard label="觀測總雨量" value={totalRain} unit="mm" sub="此事件逐時累計" tone="orange" />
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-12">
             <section>
-              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-red-300">風速與陣風 (m/s)</h3>
-              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+              <h3 className="mb-3 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-red-300">風速與陣風 (m/s)</h3>
+              <div className="h-56 md:h-72 rounded-2xl md:rounded-[2rem] border border-white/5 bg-white/[0.02] p-4 md:p-5 shadow-2xl">
                 <Line data={{
                   labels: chartData.labels,
                   datasets: [
@@ -506,8 +527,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             </section>
 
             <section>
-              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">風向 (方位與度數)</h3>
-              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+              <h3 className="mb-3 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-cyan-300">風向 (方位與度數)</h3>
+              <div className="h-56 md:h-72 rounded-2xl md:rounded-[2rem] border border-white/5 bg-white/[0.02] p-4 md:p-5 shadow-2xl">
                 <Line data={{
                   labels: chartData.labels,
                   datasets: [{
@@ -534,8 +555,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             </section>
 
             <section>
-              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-sky-300">雨量 (mm)</h3>
-              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+              <h3 className="mb-3 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-sky-300">雨量 (mm)</h3>
+              <div className="h-56 md:h-72 rounded-2xl md:rounded-[2rem] border border-white/5 bg-white/[0.02] p-4 md:p-5 shadow-2xl">
                 <Bar data={{
                   labels: chartData.labels,
                   datasets: [{
@@ -557,8 +578,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             </section>
 
             <section>
-              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-blue-300">氣壓 (hPa)</h3>
-              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+              <h3 className="mb-3 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-blue-300">氣壓 (hPa)</h3>
+              <div className="h-56 md:h-72 rounded-2xl md:rounded-[2rem] border border-white/5 bg-white/[0.02] p-4 md:p-5 shadow-2xl">
                 <Line data={{
                   labels: chartData.labels,
                   datasets: [{
@@ -583,8 +604,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
             </section>
 
             <section>
-              <h3 className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-orange-300">溫度與濕度</h3>
-              <div className="h-72 rounded-[2rem] border border-white/5 bg-white/[0.02] p-5 shadow-2xl">
+              <h3 className="mb-3 text-xs md:text-sm font-black uppercase tracking-[0.25em] text-orange-300">溫度與濕度</h3>
+              <div className="h-56 md:h-72 rounded-2xl md:rounded-[2rem] border border-white/5 bg-white/[0.02] p-4 md:p-5 shadow-2xl">
                 <Line data={{
                   labels: chartData.labels,
                   datasets: [

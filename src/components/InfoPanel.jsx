@@ -46,6 +46,10 @@ const InfoPanel = ({
   currentTyphoonPos,
   currentTimeIndex,
   rankings,
+  rankingMetric,
+  setRankingMetric,
+  stationType,
+  setStationType,
   activeMobilePanel,
   setActiveMobilePanel,
   setSelectedStation,
@@ -63,10 +67,10 @@ const InfoPanel = ({
     <>
       <div className={`
         absolute left-0 z-20 w-full px-4 py-4 transition-all duration-300 md:left-8 md:top-20 md:w-[340px] md:px-0 md:py-0
-        ${isSidebarOpen ? 'bottom-20 opacity-100' : '-bottom-full opacity-0'}
+        ${isSidebarOpen ? 'bottom-[6.5rem] opacity-100' : '-bottom-full opacity-0'}
         md:bottom-auto md:opacity-100
       `}>
-        <div className="max-h-[calc(100vh-9rem)] overflow-y-auto rounded-2xl border border-white/5 bg-[#030712]/80 p-5 shadow-2xl backdrop-blur-xl">
+        <div className="max-h-[calc(100vh-11rem)] overflow-y-auto rounded-2xl border border-white/5 bg-[#030712]/85 p-5 shadow-2xl backdrop-blur-xl">
           <div className="mb-4 flex gap-2 md:hidden">
             {[
               ['summary', '概況'],
@@ -75,7 +79,7 @@ const InfoPanel = ({
               <button
                 key={panel}
                 type="button"
-                className={`flex-1 rounded-full px-3 py-2 text-xs font-bold ${activeMobilePanel === panel ? 'bg-cyan-400 text-slate-950' : 'bg-white/10 text-slate-200'}`}
+                className={`flex-1 rounded-full px-3 py-2 text-xs font-bold ${activeMobilePanel === panel ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-400/20' : 'bg-white/10 text-slate-200'}`}
                 onClick={() => setActiveMobilePanel(panel)}
               >
                 {label}
@@ -222,13 +226,84 @@ const InfoPanel = ({
             </div>
           )}
 
-          {(activeMobilePanel === 'ranking' || window.innerWidth >= 768) && (
-            <div className="mt-5 space-y-5 border-t border-outline-variant/20 pt-5 md:hidden">
-              <MiniRanking title="最大平均風" rows={rankings.avgWind} setSelectedStation={setSelectedStation} />
-              <MiniRanking title="最大瞬間風" rows={rankings.gust} setSelectedStation={setSelectedStation} />
+          {(activeMobilePanel === 'ranking') && (
+            <div className="mt-5 space-y-4 border-t border-white/10 pt-5 md:hidden">
+              {/* Metric Select Grid */}
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  ['avgWind', '平均風'],
+                  ['gust', '瞬間風'],
+                  ['rain', '雨量'],
+                  ['pressure', '最低氣壓'],
+                ].map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    className={`rounded-xl py-2 text-xs font-bold transition-all ${rankingMetric === value ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-400/20' : 'bg-white/5 text-slate-300'}`}
+                    onClick={() => setRankingMetric(value)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Station Type Select Segmented Control */}
+              <div className="flex gap-2 rounded-xl bg-white/5 p-1">
+                {[
+                  ['all', '全部'],
+                  ['manual', '署屬站'],
+                  ['automatic', '自動站'],
+                ].map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    className={`flex-1 rounded-lg py-1 text-[11px] font-bold transition-all ${stationType === value ? 'bg-white text-slate-950 shadow-sm' : 'text-slate-400'}`}
+                    onClick={() => setStationType(value)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Ranking Rows with visual progress bars */}
+              <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                {(rankings?.[rankingMetric] || []).map((station) => {
+                  const isWind = rankingMetric === 'avgWind' || rankingMetric === 'gust';
+                  const width = rankingMetric === 'pressure'
+                    ? Math.max(8, Math.min(((1010 - station.value) / 120) * 100, 100))
+                    : Math.min((station.value / (rankingMetric === 'rain' ? 100 : 45)) * 100, 100);
+
+                  return (
+                    <button
+                      key={station.stationId}
+                      type="button"
+                      className="w-full rounded-xl bg-white/[0.02] border border-white/5 p-2.5 text-left transition hover:bg-white/10"
+                      onClick={() => setSelectedStation(station.stationId)}
+                    >
+                      <div className="mb-1 flex justify-between gap-3 text-xs font-bold text-white">
+                        <span className="truncate">{station.name}</span>
+                        <span className="shrink-0 text-cyan-300 font-bold">
+                          {isWind ? `${getBeaufortLabel(station.value)} ` : ''}{station.value} {station.unit}
+                        </span>
+                      </div>
+                      <div className="h-1 overflow-hidden rounded bg-white/10">
+                        <div className="h-full rounded bg-cyan-400" style={{ width: `${width}%` }} />
+                      </div>
+                      <div className="mt-1 flex items-center justify-between text-[9px] font-medium text-slate-500">
+                        <span>{station.type === 'manual' ? '署屬站' : '自動站'}</span>
+                        <span>{station.stationId}</span>
+                      </div>
+                    </button>
+                  );
+                })}
+                {(!rankings?.[rankingMetric] || rankings[rankingMetric].length === 0) && (
+                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center text-xs text-slate-400">
+                    此時間點沒有符合條件的測站資料。
+                  </div>
+                )}
+              </div>
             </div>
           )}
-
 
           <button
             type="button"
