@@ -13,13 +13,15 @@ const catalogue = {
 };
 
 test('parses URL query state with layers and station', () => {
-  const state = parseQueryState('?year=2024&typhoon=GAEMI&time=1721793600&station=467620&layers=wind,track,r7,rain');
+  const state = parseQueryState('?year=2024&typhoon=GAEMI&time=1721793600&station=467620&layers=wind,track,r7,rain&mode=summary&windDisplay=scale');
 
   assert.equal(state.year, '2024');
   assert.equal(state.typhoon, 'GAEMI');
   assert.equal(state.time, '1721793600');
   assert.equal(state.station, '467620');
   assert.deepEqual(state.layers, ['wind', 'track', 'r7', 'rain']);
+  assert.equal(state.mode, 'summary');
+  assert.equal(state.windDisplay, 'scale');
 });
 
 test('resolves valid and invalid query selection against catalogue', () => {
@@ -49,5 +51,12 @@ test('builds stable query strings and omits default layers', () => {
     year: '2024',
     typhoon: 'GAEMI',
     layers: ['wind', 'rain'],
-  }), '?year=2024&typhoon=GAEMI&layers=wind%2Crain');
+    mode: 'summary',
+    windDisplay: 'scale',
+  }), '?year=2024&typhoon=GAEMI&layers=wind%2Crain&mode=summary&windDisplay=scale');
+
+  assert.equal(parseQueryState('?mode=summary&windDisplay=speed').windDisplay, 'speed');
+  assert.equal(buildQueryString({ mode: 'summary', windDisplay: 'speed' }), '?mode=summary&windDisplay=speed');
 });
+
+

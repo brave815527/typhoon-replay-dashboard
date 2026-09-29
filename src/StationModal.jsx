@@ -13,25 +13,16 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Bar, Line } from 'react-chartjs-2';
-import { formatEpoch, getBeaufortLabel, getStationReading, isValidValue } from './dataAdapter.js';
+import {
+  formatEpoch,
+  formatExtremeTime,
+  getBeaufortLabel,
+  getStationReading,
+  isValidValue,
+  windDirectionText,
+} from './dataAdapter.js';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler, annotationPlugin);
-
-const directionNames = ['北', '北北東', '東北', '東北東', '東', '東南東', '東南', '南南東', '南', '南南西', '西南', '西南西', '西', '西北西', '西北', '北北西'];
-
-function formatExtremeTime(value) {
-  if (!value || String(value).startsWith('-99')) return '無資料';
-  const text = String(value);
-  if (text.length === 8) return `${text.slice(4, 6)}/${text.slice(6, 8)}`;
-  const padded = text.padStart(6, '0');
-  return `${Number(padded.slice(0, 2))}日 ${padded.slice(2, 4)}:${padded.slice(4, 6)}`;
-}
-
-function windDirectionText(deg) {
-  if (!isValidValue(deg) || deg < 0 || deg > 360) return '無資料';
-  const index = Math.floor(((deg + 11.25) % 360) / 22.5);
-  return `${directionNames[index]}風`;
-}
 
 function SummaryCard({ label, value, unit, sub, tone = 'cyan' }) {
   const tones = {
@@ -52,7 +43,7 @@ function SummaryCard({ label, value, unit, sub, tone = 'cyan' }) {
   );
 }
 
-const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
+const StationModal = ({ stationId, event, onClose }) => {
   const station = event?.stations?.[stationId] || null;
   const chartData = useMemo(() => {
     if (!event || !stationId) return null;
@@ -226,13 +217,15 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
     };
   }, [commonOptions]);
 
-  if (!station || !chartData) return null;
-
-  const extremes = station.extremes || {};
-  const totalRain = chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
+  const extremes = useMemo(() => station?.extremes || {}, [station?.extremes]);
+  const totalRain = useMemo(() => {
+    if (!chartData?.series?.precip) return '0.0';
+    return chartData.series.precip.reduce((sum, value) => sum + (value || 0), 0).toFixed(1);
+  }, [chartData]);
 
   // 1. 決定標記點的 Y 軸數值 (優先使用一日瞬間風速極值 extremes.wd7v，否則使用逐時陣風最大值)
   const maxGustVal = useMemo(() => {
+    if (!chartData) return null;
     if (isValidValue(extremes.wd7v)) return Number(extremes.wd7v);
 
     // 降級方案一：逐時瞬間風的最大值
@@ -256,7 +249,7 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
 
   // 2. 決定標記點的 X 軸索引 (藉由時間接近算法尋找與 extremes.wd7t 最貼近的 X 軸整點)
   const maxGustIdx = useMemo(() => {
-    if (maxGustVal === null) return -1;
+    if (maxGustVal === null || !chartData) return -1;
 
     if (extremes.wd7t) {
       const text = String(extremes.wd7t).padStart(6, '0'); // "DDHHMM"
@@ -406,6 +399,8 @@ const StationModal = ({ stationId, event, currentEpoch, onClose }) => {
     }
     return options;
   }, [commonOptions, maxGustIdx, maxGustVal, yAxisMax, chartData, extremes]);
+
+  if (!station || !chartData) return null;
 
   const copyLink = async () => {
     const url = new URL(window.location.href);

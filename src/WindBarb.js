@@ -91,3 +91,136 @@ export function createWindBarbIcon(speed, dir, baseColor="#dae2fd", opacity=1) {
     iconAnchor: [20, 20]
   });
 }
+
+export function getWindBarbColor(speed) {
+  if (speed >= 51.0) return '#e11d48'; // 16~17級
+  if (speed >= 32.7) return '#ef4444'; // 12~15級
+  if (speed >= 24.5) return '#fb923c'; // 10~11級
+  if (speed >= 13.9) return '#f59e0b'; // 7~9級
+  if (speed >= 8.0) return '#06b6d4'; // 5~6級
+  return '#94a3b8';
+}
+
+export function getScaleBadgeStyle(scale, speed, { type = 'scale' } = {}) {
+  const isSpeed = type === 'speed';
+  const label = isSpeed
+    ? String(Math.round(speed || 0))
+    : (speed >= 61.3 || scale >= 17 ? '17+' : String(scale));
+
+  if (speed >= 61.3 || scale >= 17) {
+    return {
+      bg: 'linear-gradient(135deg, #a21caf, #e11d48)',
+      border: '#f472b6',
+      text: '#ffffff',
+      glow: '0 0 12px rgba(244, 114, 182, 0.7)',
+      label,
+    };
+  }
+  if (scale >= 16) {
+    return {
+      bg: '#9333ea',
+      border: '#c084fc',
+      text: '#ffffff',
+      glow: '0 0 10px rgba(192, 132, 252, 0.6)',
+      label,
+    };
+  }
+  if (scale >= 14) {
+    return {
+      bg: '#dc2626',
+      border: '#f87171',
+      text: '#ffffff',
+      glow: '0 0 8px rgba(248, 113, 113, 0.6)',
+      label,
+    };
+  }
+  if (scale >= 12) {
+    return {
+      bg: '#ea580c',
+      border: '#fb923c',
+      text: '#ffffff',
+      glow: '0 0 6px rgba(251, 146, 60, 0.5)',
+      label,
+    };
+  }
+  if (scale >= 10) {
+    return {
+      bg: '#d97706',
+      border: '#fbbf24',
+      text: '#ffffff',
+      glow: '0 0 4px rgba(251, 191, 36, 0.4)',
+      label,
+    };
+  }
+  if (scale >= 7) {
+    return {
+      bg: '#0284c7',
+      border: '#38bdf8',
+      text: '#ffffff',
+      glow: 'none',
+      label,
+    };
+  }
+  if (scale >= 5) {
+    return {
+      bg: '#0d9488',
+      border: '#2dd4bf',
+      text: '#ffffff',
+      glow: 'none',
+      label,
+    };
+  }
+  return {
+    bg: '#334155',
+    border: '#64748b',
+    text: '#cbd5e1',
+    glow: 'none',
+    label,
+  };
+}
+
+export function createBeaufortBadgeIcon(scale, dir, speed, { displayType = 'scale', showArrow = false } = {}) {
+  const style = getScaleBadgeStyle(scale, speed, { type: displayType });
+  const hasDir = showArrow && dir !== null && dir !== undefined && !isNaN(dir) && dir >= 0;
+  const arrowHtml = hasDir
+    ? `<span style="display:inline-block; transform: rotate(${Number(dir) + 180}deg); font-size: 8px; margin-left: 1.5px; opacity: 0.9;">↓</span>`
+    : '';
+
+  const isWide = style.label.length >= 3;
+  const width = isWide ? 26 : 22;
+  const height = 22;
+
+  const html = `
+    <div style="
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: ${style.bg};
+      color: ${style.text};
+      border: 1.5px solid ${style.border};
+      box-shadow: ${style.glow !== 'none' ? `${style.glow}, 0 2px 4px rgba(0,0,0,0.5)` : '0 2px 4px rgba(0,0,0,0.5)'};
+      border-radius: 9999px;
+      min-width: ${width}px;
+      height: ${height}px;
+      padding: 0 3px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      backdrop-filter: blur(4px);
+    ">
+      <span>${style.label}</span>${arrowHtml}
+    </div>
+  `;
+
+  return L.divIcon({
+    html,
+    className: 'beaufort-badge-container',
+    iconSize: [width, height],
+    iconAnchor: [Math.floor(width / 2), Math.floor(height / 2)],
+  });
+}
+

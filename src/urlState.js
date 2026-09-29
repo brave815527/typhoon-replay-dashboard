@@ -13,6 +13,8 @@ export function parseQueryState(search = '') {
     time: params.get('time') || params.get('t') || '',
     station: params.get('station') || '',
     layers: layers.filter((layer) => ALL_LAYERS.includes(layer)),
+    mode: params.get('mode') === 'summary' ? 'summary' : 'replay',
+    windDisplay: ['scale', 'speed'].includes(params.get('windDisplay')) ? params.get('windDisplay') : 'barb',
   };
 }
 
@@ -30,16 +32,26 @@ export function resolveInitialSelection(catalogue, queryState = {}) {
   return { year: fallbackYear, typhoon: fallbackTyphoon, usedFallback: Boolean(queryState.year || queryState.typhoon) };
 }
 
-export function buildQueryString({ year, typhoon, time, station, layers = DEFAULT_LAYERS }) {
+export function buildQueryString({
+  year,
+  typhoon,
+  time,
+  station,
+  layers = DEFAULT_LAYERS,
+  mode = 'replay',
+  windDisplay = 'barb',
+}) {
   const params = new URLSearchParams();
   if (year) params.set('year', year);
   if (typhoon) params.set('typhoon', typhoon);
-  if (time) params.set('time', String(time));
+  if (time && mode !== 'summary') params.set('time', String(time));
   if (station) params.set('station', station);
   const normalizedLayers = layers.filter((layer) => ALL_LAYERS.includes(layer));
   if (normalizedLayers.join(',') !== DEFAULT_LAYERS.join(',')) {
     params.set('layers', normalizedLayers.join(','));
   }
+  if (mode === 'summary') params.set('mode', 'summary');
+  if (windDisplay && windDisplay !== 'barb') params.set('windDisplay', windDisplay);
   const query = params.toString();
   return query ? `?${query}` : '';
 }

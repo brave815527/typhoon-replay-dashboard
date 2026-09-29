@@ -9,14 +9,16 @@ const TopNav = ({
   setSelectedTyphoon,
   isSidebarOpen,
   setIsSidebarOpen,
+  viewMode = 'replay',
+  setViewMode,
 }) => (
   <nav className="fixed top-0 z-50 flex h-16 w-full items-center justify-between border-b border-white/5 bg-[#030712]/80 px-4 shadow-2xl backdrop-blur-xl md:px-6">
-    <div className="flex min-w-0 items-center gap-3 md:gap-8">
+    <div className="flex min-w-0 items-center gap-3 md:gap-6">
       <div className="min-w-[128px] truncate font-headline text-base font-bold tracking-tight text-blue-100 md:text-xl">
         侵台颱風資料庫
       </div>
-      <div className="flex items-center gap-2 md:gap-4">
-        <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+      <div className="flex items-center gap-2 md:gap-3">
+        <label className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
           <span className="hidden sm:inline">年</span>
           <select
             value={selectedYear}
@@ -29,7 +31,7 @@ const TopNav = ({
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+        <label className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
           <span className="hidden sm:inline">颱風</span>
           <select
             value={selectedTyphoon}
@@ -45,6 +47,30 @@ const TopNav = ({
           </select>
         </label>
       </div>
+
+      {setViewMode && (
+        <div className="flex items-center rounded-full border border-white/10 bg-slate-950/70 p-0.5 shadow-lg backdrop-blur-md">
+          <button
+            type="button"
+            onClick={() => setViewMode('replay')}
+            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold transition ${viewMode === 'replay' ? 'bg-cyan-400 text-slate-950 shadow' : 'text-slate-300 hover:text-white'}`}
+            title="逐時回放模式"
+          >
+            <span className="material-symbols-outlined text-sm">schedule</span>
+            <span className="hidden sm:inline">逐時回放</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode('summary')}
+            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold transition ${viewMode === 'summary' ? 'bg-cyan-400 text-slate-950 shadow' : 'text-slate-300 hover:text-white'}`}
+            title="全事件最大陣風總結圖"
+          >
+            <span className="material-symbols-outlined text-sm">air</span>
+            <span className="hidden sm:inline">最大陣風總結</span>
+            <span className="sm:hidden">總結</span>
+          </button>
+        </div>
+      )}
     </div>
 
     <button

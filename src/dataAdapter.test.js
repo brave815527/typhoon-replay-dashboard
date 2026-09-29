@@ -80,3 +80,31 @@ test('selects the latest track point at or before the current epoch', () => {
   assert.equal(getStationType('466990'), 'manual');
   assert.equal(getStationType('C0A520'), 'automatic');
 });
+
+test('computes Beaufort scale and event maximum gust summary', async () => {
+  const { getBeaufortScale, getBeaufortScaleNumber, getEventMaxGustSummary, rankEventStations } = await import('./dataAdapter.js');
+  const event = normalizeTyphoonEvent(sampleEvent, { year: '2024', typhoon: 'GAEMI' });
+
+  assert.equal(getBeaufortScale(0.1), 0);
+  assert.equal(getBeaufortScale(15.0), 7);
+  assert.equal(getBeaufortScale(25.0), 10);
+  assert.equal(getBeaufortScale(35.0), 12);
+  assert.equal(getBeaufortScale(42.0), 14);
+  assert.equal(getBeaufortScale(65.0), 17);
+
+  assert.equal(getBeaufortScaleNumber(0.1), '0');
+  assert.equal(getBeaufortScaleNumber(42.0), '14');
+  assert.equal(getBeaufortScaleNumber(65.0), '17+');
+
+  const summary = getEventMaxGustSummary(event);
+  assert.ok(summary['466990']);
+  assert.equal(summary['466990'].maxGust, 42);
+  assert.equal(summary['466990'].scale, 14);
+  assert.equal(summary['466990'].scaleNumber, '14');
+
+  const gustRank = rankEventStations(event, 'gust');
+  assert.equal(gustRank[0].stationId, '466990');
+  assert.equal(gustRank[0].value, 42);
+  assert.equal(gustRank[0].scaleNumber, '14');
+});
+

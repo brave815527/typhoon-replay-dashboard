@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatEpoch, getBeaufortLabel, getTyphoonIntensity } from '../dataAdapter.js';
+import { formatEpoch, getBeaufortLabel, getBeaufortScaleNumber, getTyphoonIntensity } from '../dataAdapter.js';
 
 const warnText = {
   0: '無警報',
@@ -55,6 +55,8 @@ const InfoPanel = ({
   setSelectedStation,
   isSidebarOpen,
   setIsSidebarOpen,
+  viewMode = 'replay',
+  setViewMode,
 }) => {
   if (!event) return null;
 
@@ -62,6 +64,9 @@ const InfoPanel = ({
   const progress = event.epochs.length > 1
     ? Math.round((currentTimeIndex / (event.epochs.length - 1)) * 100)
     : 0;
+
+  const topGust = rankings?.gust?.[0] || null;
+  const topAvg = rankings?.avgWind?.[0] || null;
 
   return (
     <>
@@ -100,27 +105,66 @@ const InfoPanel = ({
                 </div>
               </div>
 
-              <ValueRow label="當前時間" value={formatEpoch(currentEpoch)} />
-              <ValueRow label="資料範圍" value={`${formatEpoch(event.timeRange.startEpoch, { hour: undefined, minute: undefined })} - ${formatEpoch(event.timeRange.endEpoch, { hour: undefined, minute: undefined })}`} />
-              <ValueRow label="回放進度" value={`${progress}%`} />
+              {viewMode === 'summary' ? (
+                <>
+                  <div className="flex items-center justify-between rounded-lg border border-cyan-400/20 bg-cyan-500/10 px-3 py-2 text-xs font-bold text-cyan-200">
+                    <span className="flex items-center gap-1.5">
+                      <span className="material-symbols-outlined text-sm">air</span>
+                      全事件最大陣風總結
+                    </span>
+                    {setViewMode && (
+                      <button
+                        type="button"
+                        onClick={() => setViewMode('replay')}
+                        className="rounded bg-cyan-400 px-2 py-0.5 text-[11px] font-bold text-slate-950 transition hover:bg-cyan-300"
+                      >
+                        返回回放
+                      </button>
+                    )}
+                  </div>
+                  <ValueRow label="資料範圍" value={`${formatEpoch(event.timeRange.startEpoch, { hour: undefined, minute: undefined })} - ${formatEpoch(event.timeRange.endEpoch, { hour: undefined, minute: undefined })}`} />
+                  <ValueRow label="觀測測站" value={`${Object.keys(event.stations || {}).length} 個測站`} />
+                </>
+              ) : (
+                <>
+                  <ValueRow label="當前時間" value={formatEpoch(currentEpoch)} />
+                  <ValueRow label="資料範圍" value={`${formatEpoch(event.timeRange.startEpoch, { hour: undefined, minute: undefined })} - ${formatEpoch(event.timeRange.endEpoch, { hour: undefined, minute: undefined })}`} />
+                  <ValueRow label="回放進度" value={`${progress}%`} />
+                </>
+              )}
 
               <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
                 <div className="mb-3 flex items-center gap-2 text-xs font-black tracking-widest text-on-surface-variant">
                   <span className="material-symbols-outlined text-sm">air</span>
-                  中心風力觀測
+                  {viewMode === 'summary' ? '全事件測站極值' : '中心風力觀測'}
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="text-[10px] text-on-surface-variant">近中心最大風速</div>
-                    <div className="text-xl font-black text-white">{currentTyphoonPos.wind ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
-                    <div className="text-[11px] font-bold text-secondary-fixed">{getBeaufortLabel(currentTyphoonPos.wind)}</div>
+                {viewMode === 'summary' ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-[10px] text-on-surface-variant">全台最大陣風 ({topGust?.name || '-'})</div>
+                      <div className="text-xl font-black text-white">{topGust?.value ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
+                      <div className="text-[11px] font-bold text-rose-400">風級 {getBeaufortScaleNumber(topGust?.value)}</div>
+                    </div>
+                    <div className="border-l border-outline-variant/20 pl-4">
+                      <div className="text-[10px] text-on-surface-variant">最大平均風 ({topAvg?.name || '-'})</div>
+                      <div className="text-xl font-black text-white">{topAvg?.value ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
+                      <div className="text-[11px] font-bold text-secondary-fixed">風級 {getBeaufortScaleNumber(topAvg?.value)}</div>
+                    </div>
                   </div>
-                  <div className="border-l border-outline-variant/20 pl-4">
-                    <div className="text-[10px] text-on-surface-variant">瞬間最大陣風</div>
-                    <div className="text-xl font-black text-white">{currentTyphoonPos.gust ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
-                    <div className="text-[11px] font-bold text-error">{getBeaufortLabel(currentTyphoonPos.gust)}</div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-[10px] text-on-surface-variant">近中心最大風速</div>
+                      <div className="text-xl font-black text-white">{currentTyphoonPos.wind ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
+                      <div className="text-[11px] font-bold text-secondary-fixed">{getBeaufortLabel(currentTyphoonPos.wind)}</div>
+                    </div>
+                    <div className="border-l border-outline-variant/20 pl-4">
+                      <div className="text-[10px] text-on-surface-variant">瞬間最大陣風</div>
+                      <div className="text-xl font-black text-white">{currentTyphoonPos.gust ?? '-'} <span className="text-xs font-normal text-outline">m/s</span></div>
+                      <div className="text-[11px] font-bold text-error">{getBeaufortLabel(currentTyphoonPos.gust)}</div>
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="mt-4 grid grid-cols-2 gap-2.5 border-t border-white/5 pt-4">
                   {/* Card 1: 中心氣壓 */}
                   <div className="group rounded-xl border border-white/5 bg-white/[0.02] p-3 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04]">

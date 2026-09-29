@@ -14,6 +14,7 @@ import {
   getCurrentData,
   getCurrentTyphoonPosition,
   normalizeTyphoonEvent,
+  rankEventStations,
   rankStations,
 } from './dataAdapter.js';
 
@@ -34,9 +35,11 @@ const initialState = {
   pendingQueryTime: initialQuery.time || '',
   isSidebarOpen: false,
   activeMobilePanel: 'summary',
-  rankingMetric: 'avgWind',
+  rankingMetric: 'gust',
   stationType: 'all',
   layers: initialQuery.layers.length ? initialQuery.layers : DEFAULT_LAYERS,
+  viewMode: initialQuery.mode || 'replay',
+  windDisplayMode: initialQuery.windDisplay || 'barb',
   isLoading: true,
   error: null,
   notice: '',
@@ -92,10 +95,18 @@ function reducer(state, action) {
     }
     case 'DATA_ERROR':
       return { ...state, isLoading: false, error: `無法載入 ${state.selectedYear} ${state.selectedTyphoon} 的資料。` };
+    case 'SET_VIEW_MODE':
+      return {
+        ...state,
+        viewMode: action.mode,
+        isPlaying: action.mode === 'summary' ? false : state.isPlaying,
+      };
+    case 'SET_WIND_DISPLAY_MODE':
+      return { ...state, windDisplayMode: action.mode };
     case 'SET_TIME_INDEX':
-      return { ...state, currentTimeIndex: action.index };
+      return { ...state, currentTimeIndex: action.index, viewMode: 'replay' };
     case 'SET_PLAYING':
-      return { ...state, isPlaying: action.isPlaying };
+      return { ...state, isPlaying: action.isPlaying, viewMode: action.isPlaying ? 'replay' : state.viewMode };
     case 'SET_SPEED':
       return { ...state, playbackSpeed: action.speed };
     case 'SET_STATION':
@@ -184,12 +195,22 @@ function App() {
     () => getCurrentTyphoonPosition(state.event?.track || [], currentEpoch),
     [state.event, currentEpoch]
   );
-  const rankings = useMemo(() => ({
-    avgWind: rankStations(state.event, currentEpoch, 'avgWind', { stationType: state.stationType }),
-    gust: rankStations(state.event, currentEpoch, 'gust', { stationType: state.stationType }),
-    rain: rankStations(state.event, currentEpoch, 'rain', { stationType: state.stationType }),
-    pressure: rankStations(state.event, currentEpoch, 'pressure', { stationType: state.stationType }),
-  }), [state.event, currentEpoch, state.stationType]);
+  const rankings = useMemo(() => {
+    if (state.viewMode === 'summary') {
+      return {
+        avgWind: rankEventStations(state.event, 'avgWind', { stationType: state.stationType, limit: 30 }),
+        gust: rankEventStations(state.event, 'gust', { stationType: state.stationType, limit: 30 }),
+        rain: rankEventStations(state.event, 'rain', { stationType: state.stationType, limit: 30 }),
+        pressure: rankEventStations(state.event, 'pressure', { stationType: state.stationType, limit: 30 }),
+      };
+    }
+    return {
+      avgWind: rankStations(state.event, currentEpoch, 'avgWind', { stationType: state.stationType }),
+      gust: rankStations(state.event, currentEpoch, 'gust', { stationType: state.stationType }),
+      rain: rankStations(state.event, currentEpoch, 'rain', { stationType: state.stationType }),
+      pressure: rankStations(state.event, currentEpoch, 'pressure', { stationType: state.stationType }),
+    };
+  }, [state.event, currentEpoch, state.stationType, state.viewMode]);
 
   useEffect(() => {
     if (state.isPlaying && epochs.length > 0) {
@@ -215,9 +236,11 @@ function App() {
       time: currentEpoch,
       station: state.selectedStation,
       layers: state.layers,
+      mode: state.viewMode,
+      windDisplay: state.windDisplayMode,
     });
     window.history.replaceState(null, '', `${window.location.pathname}${query}`);
-  }, [state.selectedYear, state.selectedTyphoon, currentEpoch, state.selectedStation, state.layers]);
+  }, [state.selectedYear, state.selectedTyphoon, currentEpoch, state.selectedStation, state.layers, state.viewMode, state.windDisplayMode]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -268,6 +291,8 @@ function App() {
         setSelectedTyphoon={(typhoon) => dispatch({ type: 'SELECT_TYPHOON', typhoon })}
         isSidebarOpen={state.isSidebarOpen}
         setIsSidebarOpen={(isOpen) => dispatch({ type: 'SET_SIDEBAR_OPEN', isOpen })}
+        viewMode={state.viewMode}
+        setViewMode={(mode) => dispatch({ type: 'SET_VIEW_MODE', mode })}
       />
 
       {state.notice && (
@@ -291,6 +316,10 @@ function App() {
               layers={state.layers}
               toggleLayer={(layer) => dispatch({ type: 'TOGGLE_LAYER', layer })}
               setSelectedStation={(stationId) => dispatch({ type: 'SET_STATION', stationId })}
+              viewMode={state.viewMode}
+              setViewMode={(mode) => dispatch({ type: 'SET_VIEW_MODE', mode })}
+              windDisplayMode={state.windDisplayMode}
+              setWindDisplayMode={(mode) => dispatch({ type: 'SET_WIND_DISPLAY_MODE', mode })}
             />
           </Suspense>
 
@@ -310,6 +339,8 @@ function App() {
             setSelectedStation={(stationId) => dispatch({ type: 'SET_STATION', stationId })}
             isSidebarOpen={state.isSidebarOpen}
             setIsSidebarOpen={(isOpen) => dispatch({ type: 'SET_SIDEBAR_OPEN', isOpen })}
+            viewMode={state.viewMode}
+            setViewMode={(mode) => dispatch({ type: 'SET_VIEW_MODE', mode })}
           />
 
           <RankingPanel
@@ -319,6 +350,7 @@ function App() {
             stationType={state.stationType}
             setStationType={(stationType) => dispatch({ type: 'SET_STATION_TYPE', stationType })}
             setSelectedStation={(stationId) => dispatch({ type: 'SET_STATION', stationId })}
+            viewMode={state.viewMode}
           />
 
           <TimelineScrubber
@@ -330,6 +362,8 @@ function App() {
             playbackSpeed={state.playbackSpeed}
             setPlaybackSpeed={(speed) => dispatch({ type: 'SET_SPEED', speed })}
             jumpToPeak={jumpToPeak}
+            viewMode={state.viewMode}
+            setViewMode={(mode) => dispatch({ type: 'SET_VIEW_MODE', mode })}
           />
         </>
       )}

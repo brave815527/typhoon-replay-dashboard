@@ -82,7 +82,6 @@ export const TYPHOON_NAME_MAP = {
   MOLAVE: '莫拉菲',
   // 2006 - 2007
   KROSA: '柯羅莎',
-  MITAG: '米塔',
   PABUK: '帕布',
   SEPAT: '聖帕',
   WIPHA: '韋帕',
@@ -297,6 +296,166 @@ export function formatEpoch(epoch, options = {}) {
     hour12: false,
     ...options,
   });
+}
+
+export function getBeaufortScale(speed) {
+  if (!isValidValue(speed) || speed < 0) return 0;
+  if (speed < 0.3) return 0;
+  if (speed < 1.6) return 1;
+  if (speed < 3.4) return 2;
+  if (speed < 5.5) return 3;
+  if (speed < 8.0) return 4;
+  if (speed < 10.8) return 5;
+  if (speed < 13.9) return 6;
+  if (speed < 17.2) return 7;
+  if (speed < 20.8) return 8;
+  if (speed < 24.5) return 9;
+  if (speed < 28.5) return 10;
+  if (speed < 32.7) return 11;
+  if (speed < 37.0) return 12;
+  if (speed < 41.5) return 13;
+  if (speed < 46.2) return 14;
+  if (speed < 51.0) return 15;
+  if (speed < 56.1) return 16;
+  return 17;
+}
+
+export function getBeaufortScaleNumber(speed) {
+  if (!isValidValue(speed) || speed < 0) return '-';
+  if (speed >= 61.3) return '17+';
+  return String(getBeaufortScale(speed));
+}
+
+const DIRECTION_NAMES = ['北', '北北東', '東北', '東北東', '東', '東南東', '東南', '南南東', '南', '南南西', '西南', '西南西', '西', '西北西', '西北', '北北西'];
+
+export function windDirectionText(deg) {
+  if (!isValidValue(deg) || deg < 0 || deg > 360) return '無資料';
+  const index = Math.floor(((Number(deg) + 11.25) % 360) / 22.5);
+  return `${DIRECTION_NAMES[index]}風`;
+}
+
+export function formatExtremeTime(value) {
+  if (!value || String(value).startsWith('-99')) return '無資料';
+  const text = String(value);
+  if (text.length === 10) return formatEpoch(text);
+  if (text.length === 8) return `${text.slice(4, 6)}/${text.slice(6, 8)}`;
+  const padded = text.padStart(6, '0');
+  return `${Number(padded.slice(0, 2))}日 ${padded.slice(2, 4)}:${padded.slice(4, 6)}`;
+}
+
+export function getEventMaxGustSummary(event) {
+  if (!event || !event.stations) return {};
+
+  const summary = {};
+
+  Object.entries(event.stations).forEach(([stationId, station]) => {
+    let maxGust = null;
+    let gustDir = null;
+    let timeStr = null;
+
+    const extremes = station.extremes || {};
+    if (isValidValue(extremes.wd7v)) {
+      maxGust = Number(extremes.wd7v);
+      gustDir = isValidValue(extremes.wd7d) ? Number(extremes.wd7d) : null;
+      timeStr = extremes.wd7t ? String(extremes.wd7t) : null;
+    }
+
+    if (event.hourlyByEpoch) {
+      Object.entries(event.hourlyByEpoch).forEach(([epoch, hourlyMap]) => {
+        const raw = hourlyMap[stationId];
+        if (!raw) return;
+        const reading = getStationReading(raw);
+        const g = reading.gust ?? reading.windAvg;
+        if (isValidValue(g) && (maxGust === null || g > maxGust)) {
+          maxGust = g;
+          if (isValidValue(reading.gustDir)) gustDir = reading.gustDir;
+          else if (isValidValue(reading.windDir)) gustDir = reading.windDir;
+          timeStr = String(epoch);
+        }
+      });
+    }
+
+    if (maxGust !== null) {
+      const scale = getBeaufortScale(maxGust);
+      summary[stationId] = {
+        stationId,
+        name: station.name,
+        lat: station.lat,
+        lon: station.lon,
+        type: station.type,
+        maxGust,
+        gustDir: gustDir ?? 0,
+        timeStr,
+        scale,
+        scaleNumber: getBeaufortScaleNumber(maxGust),
+        scaleLabel: getBeaufortLabel(maxGust),
+      };
+    }
+  });
+
+  return summary;
+}
+
+export function rankEventStations(event, metric = 'gust', options = {}) {
+  if (!event || !event.stations) return [];
+  const stationType = options.stationType || 'all';
+
+  const fieldMap = {
+    avgWind: { field: 'wd1v', timeField: 'wd1t', unit: 'm/s', higherIsStronger: true },
+    gust: { field: 'wd7v', timeField: 'wd7t', dirField: 'wd7d', unit: 'm/s', higherIsStronger: true },
+    rain: { field: 'pp1v', timeField: 'pp1t', unit: 'mm', higherIsStronger: true },
+    pressure: { field: 'ps5v', timeField: 'ps5t', unit: 'hPa', higherIsStronger: false },
+  };
+
+  const config = fieldMap[metric] || fieldMap.gust;
+
+  return Object.entries(event.stations)
+    .map(([stationId, station]) => {
+      if (stationType !== 'all' && station.type !== stationType) return null;
+      let val = null;
+      let timeVal = null;
+      let dirVal = null;
+
+      if (station.extremes && isValidValue(station.extremes[config.field])) {
+        val = Number(station.extremes[config.field]);
+        timeVal = station.extremes[config.timeField];
+        if (config.dirField) dirVal = station.extremes[config.dirField];
+      }
+
+      if (event.hourlyByEpoch) {
+        Object.entries(event.hourlyByEpoch).forEach(([epoch, hourlyMap]) => {
+          const raw = hourlyMap[stationId];
+          if (!raw) return;
+          const reading = getStationReading(raw);
+          const hVal = reading[metric];
+          if (isValidValue(hVal)) {
+            if (val === null || (config.higherIsStronger ? hVal > val : hVal < val)) {
+              val = hVal;
+              timeVal = epoch;
+              if (metric === 'gust') dirVal = reading.gustDir ?? reading.windDir;
+            }
+          }
+        });
+      }
+
+      if (val === null) return null;
+
+      return {
+        stationId,
+        name: station.name,
+        type: station.type,
+        value: val,
+        unit: config.unit,
+        time: timeVal,
+        dir: dirVal,
+        scale: (metric === 'gust' || metric === 'avgWind') ? getBeaufortScale(val) : null,
+        scaleNumber: (metric === 'gust' || metric === 'avgWind') ? getBeaufortScaleNumber(val) : null,
+        sortValue: config.higherIsStronger ? val : -val,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.sortValue - a.sortValue)
+    .slice(0, options.limit || 30);
 }
 
 export function getMetricConfig(metric) {

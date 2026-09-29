@@ -10,6 +10,8 @@ const TimelineScrubber = ({
   playbackSpeed,
   setPlaybackSpeed,
   jumpToPeak,
+  viewMode = 'replay',
+  setViewMode,
 }) => {
   const currentEpoch = epochs[currentTimeIndex];
   const progress = (currentTimeIndex / Math.max(1, epochs.length - 1)) * 100;
@@ -111,6 +113,16 @@ const TimelineScrubber = ({
       >
         最強時刻
       </button>
+      {setViewMode && (
+        <button
+          type="button"
+          className={`hidden rounded-full px-3 py-2 text-[11px] font-bold transition md:block ${viewMode === 'summary' ? 'bg-cyan-400 text-slate-950 shadow-lg' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
+          onClick={() => setViewMode(viewMode === 'summary' ? 'replay' : 'summary')}
+          title="切換全事件最大陣風總結圖"
+        >
+          {viewMode === 'summary' ? '返回回放' : '陣風總結'}
+        </button>
+      )}
       <div className="flex rounded-full border border-white/10 bg-white/5 px-1.5 py-1">
         {[1, 2, 4].map((speed) => (
           <button
