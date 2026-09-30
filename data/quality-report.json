@@ -1,0 +1,5202 @@
+{
+  "generatedAt": "2026-09-30T07:42:25.450829+00:00",
+  "timeZone": "Asia/Taipei",
+  "datePolicy": "路徑首末時刻前後各48小時",
+  "events": [
+    {
+      "year": 2000,
+      "name": "BEBINCA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.BEBINCA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\BEBINCA.txt",
+          "kind": "hourly",
+          "accepted": 1248,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\BEBINCA.txt",
+          "kind": "hourly",
+          "accepted": 17136,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\BEBINCA.txt",
+          "kind": "daily",
+          "accepted": 52,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\BEBINCA.txt",
+          "kind": "daily",
+          "accepted": 714,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "BILIS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.BILIS.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\BILIS.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\BILIS.txt",
+          "kind": "hourly",
+          "accepted": 25704,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\BILIS.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\BILIS.txt",
+          "kind": "daily",
+          "accepted": 1071,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "BOPHA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.BOPHA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\BOPHA.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\BOPHA.txt",
+          "kind": "hourly",
+          "accepted": 25704,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\BOPHA.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\BOPHA.txt",
+          "kind": "daily",
+          "accepted": 1071,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "KAI-TAK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.KAI-TAK.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\KAI-TAK.txt",
+          "kind": "hourly",
+          "accepted": 3120,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\KAI-TAK.txt",
+          "kind": "hourly",
+          "accepted": 42840,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\KAI-TAK.txt",
+          "kind": "daily",
+          "accepted": 130,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\KAI-TAK.txt",
+          "kind": "daily",
+          "accepted": 1785,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "PRAPIROON",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.PRAPIROON.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\PRAPIROON.txt",
+          "kind": "hourly",
+          "accepted": 2496,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\PRAPIROON.txt",
+          "kind": "hourly",
+          "accepted": 34272,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\PRAPIROON.txt",
+          "kind": "daily",
+          "accepted": 104,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\PRAPIROON.txt",
+          "kind": "daily",
+          "accepted": 1428,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "XANGSANE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.XANGSANE.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\XANGSANE.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\XANGSANE.txt",
+          "kind": "hourly",
+          "accepted": 25704,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\XANGSANE.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\XANGSANE.txt",
+          "kind": "daily",
+          "accepted": 1071,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2000,
+      "name": "YAGI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2000_TrackData\\2000.YAGI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2000_Station_hr_man\\YAGI.txt",
+          "kind": "hourly",
+          "accepted": 2496,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_hr_auto\\YAGI.txt",
+          "kind": "hourly",
+          "accepted": 34272,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_man\\YAGI.txt",
+          "kind": "daily",
+          "accepted": 104,
+          "excluded": 0
+        },
+        {
+          "path": "2000_Station_daily_auto\\YAGI.txt",
+          "kind": "daily",
+          "accepted": 1428,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "CHEBI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.CHEBI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\CHEBI.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\CHEBI.txt",
+          "kind": "hourly",
+          "accepted": 23760,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\CHEBI.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\CHEBI.txt",
+          "kind": "daily",
+          "accepted": 993,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "CIMARON",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.CIMARON.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\CIMARON.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\CIMARON.txt",
+          "kind": "hourly",
+          "accepted": 23760,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\CIMARON.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\CIMARON.txt",
+          "kind": "daily",
+          "accepted": 993,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "HAIYAN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.HAIYAN.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\HAIYAN.txt",
+          "kind": "hourly",
+          "accepted": 1248,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\HAIYAN.txt",
+          "kind": "hourly",
+          "accepted": 15888,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\HAIYAN.txt",
+          "kind": "daily",
+          "accepted": 52,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\HAIYAN.txt",
+          "kind": "daily",
+          "accepted": 664,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "LEKIMA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.LEKIMA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\LEKIMA.txt",
+          "kind": "hourly",
+          "accepted": 3744,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\LEKIMA.txt",
+          "kind": "hourly",
+          "accepted": 52992,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\LEKIMA.txt",
+          "kind": "daily",
+          "accepted": 156,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\LEKIMA.txt",
+          "kind": "daily",
+          "accepted": 2214,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "NARI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.NARI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\NARI.txt",
+          "kind": "hourly",
+          "accepted": 4368,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\NARI.txt",
+          "kind": "hourly",
+          "accepted": 61824,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\NARI.txt",
+          "kind": "daily",
+          "accepted": 182,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\NARI.txt",
+          "kind": "daily",
+          "accepted": 2583,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "TORAJI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.TORAJI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\TORAJI.txt",
+          "kind": "hourly",
+          "accepted": 2496,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\TORAJI.txt",
+          "kind": "hourly",
+          "accepted": 31680,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\TORAJI.txt",
+          "kind": "daily",
+          "accepted": 104,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\TORAJI.txt",
+          "kind": "daily",
+          "accepted": 1324,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "TRAMI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.TRAMI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\TRAMI.txt",
+          "kind": "hourly",
+          "accepted": 1248,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\TRAMI.txt",
+          "kind": "hourly",
+          "accepted": 15840,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\TRAMI.txt",
+          "kind": "daily",
+          "accepted": 52,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\TRAMI.txt",
+          "kind": "daily",
+          "accepted": 662,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "UTOR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.UTOR.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\UTOR.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\UTOR.txt",
+          "kind": "hourly",
+          "accepted": 23760,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\UTOR.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\UTOR.txt",
+          "kind": "daily",
+          "accepted": 993,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2001,
+      "name": "YUTU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2001_TrackData\\2001.YUTU.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2001_Station_hr_man\\YUTU.txt",
+          "kind": "hourly",
+          "accepted": 1248,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_hr_auto\\YUTU.txt",
+          "kind": "hourly",
+          "accepted": 15840,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_man\\YUTU.txt",
+          "kind": "daily",
+          "accepted": 52,
+          "excluded": 0
+        },
+        {
+          "path": "2001_Station_daily_auto\\YUTU.txt",
+          "kind": "daily",
+          "accepted": 662,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2002,
+      "name": "NAKRI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2002_TrackData\\2002.NAKRI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2002_Station_hr_man\\NAKRI.txt",
+          "kind": "hourly",
+          "accepted": 1296,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_hr_auto\\NAKRI.txt",
+          "kind": "hourly",
+          "accepted": 17471,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_man\\NAKRI.txt",
+          "kind": "daily",
+          "accepted": 54,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_auto\\NAKRI.txt",
+          "kind": "daily",
+          "accepted": 732,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2002,
+      "name": "RAMMASUN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2002_TrackData\\2002.RAMMASUN.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2002_Station_hr_man\\RAMMASUN.txt",
+          "kind": "hourly",
+          "accepted": 1944,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_hr_auto\\RAMMASUN.txt",
+          "kind": "hourly",
+          "accepted": 26201,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_man\\RAMMASUN.txt",
+          "kind": "daily",
+          "accepted": 81,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_auto\\RAMMASUN.txt",
+          "kind": "daily",
+          "accepted": 1098,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2002,
+      "name": "SINLAKU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2002_TrackData\\2002.SINLAKU.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2002_Station_hr_man\\SINLAKU.txt",
+          "kind": "hourly",
+          "accepted": 3360,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_hr_auto\\SINLAKU.txt",
+          "kind": "hourly",
+          "accepted": 44021,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_man\\SINLAKU.txt",
+          "kind": "daily",
+          "accepted": 140,
+          "excluded": 0
+        },
+        {
+          "path": "2002_Station_daily_auto\\SINLAKU.txt",
+          "kind": "daily",
+          "accepted": 1845,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "DUJUAN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.DUJUAN.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\DUJUAN.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\DUJUAN.txt",
+          "kind": "hourly",
+          "accepted": 26568,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\DUJUAN.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\DUJUAN.txt",
+          "kind": "daily",
+          "accepted": 1113,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "IMBUDO",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.IMBUDO.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\IMBUDO.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\IMBUDO.txt",
+          "kind": "hourly",
+          "accepted": 26568,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\IMBUDO.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\IMBUDO.txt",
+          "kind": "daily",
+          "accepted": 1113,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "KROVANH",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.KROVANH.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\KROVANH.txt",
+          "kind": "hourly",
+          "accepted": 1344,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\KROVANH.txt",
+          "kind": "hourly",
+          "accepted": 17712,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\KROVANH.txt",
+          "kind": "daily",
+          "accepted": 56,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\KROVANH.txt",
+          "kind": "daily",
+          "accepted": 742,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "KUJIRA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.KUJIRA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\KUJIRA.txt",
+          "kind": "hourly",
+          "accepted": 2688,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\KUJIRA.txt",
+          "kind": "hourly",
+          "accepted": 35616,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\KUJIRA.txt",
+          "kind": "daily",
+          "accepted": 112,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\KUJIRA.txt",
+          "kind": "daily",
+          "accepted": 1492,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "MELOR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.MELOR.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\MELOR.txt",
+          "kind": "hourly",
+          "accepted": 1344,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\MELOR.txt",
+          "kind": "hourly",
+          "accepted": 17712,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\MELOR.txt",
+          "kind": "daily",
+          "accepted": 56,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\MELOR.txt",
+          "kind": "daily",
+          "accepted": 742,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "MORAKOT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.MORAKOT.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\MORAKOT.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\MORAKOT.txt",
+          "kind": "hourly",
+          "accepted": 26568,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\MORAKOT.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\MORAKOT.txt",
+          "kind": "daily",
+          "accepted": 1113,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "NANGKA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.NANGKA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\NANGKA.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\NANGKA.txt",
+          "kind": "hourly",
+          "accepted": 26712,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\NANGKA.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\NANGKA.txt",
+          "kind": "daily",
+          "accepted": 1119,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "SOUDELOR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.SOUDELOR.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\SOUDELOR.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\SOUDELOR.txt",
+          "kind": "hourly",
+          "accepted": 26712,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\SOUDELOR.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\SOUDELOR.txt",
+          "kind": "daily",
+          "accepted": 1119,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2003,
+      "name": "VAMCO",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2003_TrackData\\2003.VAMCO.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2003_Station_hr_man\\VAMCO.txt",
+          "kind": "hourly",
+          "accepted": 1344,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_hr_auto\\VAMCO.txt",
+          "kind": "hourly",
+          "accepted": 17712,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_man\\VAMCO.txt",
+          "kind": "daily",
+          "accepted": 56,
+          "excluded": 0
+        },
+        {
+          "path": "2003_Station_daily_auto\\VAMCO.txt",
+          "kind": "daily",
+          "accepted": 742,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "AERE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.AERE.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 2280,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 35616,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\AERE.txt",
+          "kind": "daily",
+          "accepted": 96,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\AERE.txt",
+          "kind": "daily",
+          "accepted": 1484,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "CONSON",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.CONSON.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\CONSON.txt",
+          "kind": "hourly",
+          "accepted": 2016,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\CONSON.txt",
+          "kind": "hourly",
+          "accepted": 26712,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\CONSON.txt",
+          "kind": "daily",
+          "accepted": 84,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\CONSON.txt",
+          "kind": "daily",
+          "accepted": 1113,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "HAIMA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.HAIMA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\HAIMA.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\HAIMA.txt",
+          "kind": "hourly",
+          "accepted": 26928,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\HAIMA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\HAIMA.txt",
+          "kind": "daily",
+          "accepted": 1122,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "KOMPASU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.KOMPASU.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\KOMPASU.txt",
+          "kind": "hourly",
+          "accepted": 1344,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\KOMPASU.txt",
+          "kind": "hourly",
+          "accepted": 17808,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\KOMPASU.txt",
+          "kind": "daily",
+          "accepted": 56,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\KOMPASU.txt",
+          "kind": "daily",
+          "accepted": 742,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "MEARI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.MEARI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\MEARI.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\MEARI.txt",
+          "kind": "hourly",
+          "accepted": 17952,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\MEARI.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\MEARI.txt",
+          "kind": "daily",
+          "accepted": 748,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "MINDULLE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.MINDULLE.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\MINDULLE.txt",
+          "kind": "hourly",
+          "accepted": 4032,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\MINDULLE.txt",
+          "kind": "hourly",
+          "accepted": 53424,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\MINDULLE.txt",
+          "kind": "daily",
+          "accepted": 168,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\MINDULLE.txt",
+          "kind": "daily",
+          "accepted": 2226,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "NANMADOL",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.NANMADOL.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\NANMADOL.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\NANMADOL.txt",
+          "kind": "hourly",
+          "accepted": 17952,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\NANMADOL.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\NANMADOL.txt",
+          "kind": "daily",
+          "accepted": 748,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "NOCK-TEN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.NOCK-TEN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\NOCK-TEN.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\NOCK-TEN.txt",
+          "kind": "hourly",
+          "accepted": 35904,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\NOCK-TEN.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\NOCK-TEN.txt",
+          "kind": "daily",
+          "accepted": 1496,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2004,
+      "name": "RANANIM",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2004_TrackData\\2004.RANANIM.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2004_Station_hr_man\\RANANIM.txt",
+          "kind": "hourly",
+          "accepted": 2400,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_hr_auto\\RANANIM.txt",
+          "kind": "hourly",
+          "accepted": 35616,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_man\\RANANIM.txt",
+          "kind": "daily",
+          "accepted": 100,
+          "excluded": 0
+        },
+        {
+          "path": "2004_Station_daily_auto\\RANANIM.txt",
+          "kind": "daily",
+          "accepted": 1484,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "DAMREY",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.DAMREY.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\DAMREY.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\DAMREY.txt",
+          "kind": "hourly",
+          "accepted": 26928,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\DAMREY.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\DAMREY.txt",
+          "kind": "daily",
+          "accepted": 1122,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "HAITANG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.HAITANG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\HAITANG.txt",
+          "kind": "hourly",
+          "accepted": 3191,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\HAITANG.txt",
+          "kind": "hourly",
+          "accepted": 44880,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\HAITANG.txt",
+          "kind": "daily",
+          "accepted": 134,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\HAITANG.txt",
+          "kind": "daily",
+          "accepted": 1870,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "KHANUN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.KHANUN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\KHANUN.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\KHANUN.txt",
+          "kind": "hourly",
+          "accepted": 23904,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\KHANUN.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\KHANUN.txt",
+          "kind": "daily",
+          "accepted": 1002,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "LONGWANG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.LONGWANG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\LONGWANG.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\LONGWANG.txt",
+          "kind": "hourly",
+          "accepted": 31872,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\LONGWANG.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\LONGWANG.txt",
+          "kind": "daily",
+          "accepted": 1336,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "MATSA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.MATSA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\MATSA.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\MATSA.txt",
+          "kind": "hourly",
+          "accepted": 35904,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\MATSA.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\MATSA.txt",
+          "kind": "daily",
+          "accepted": 1496,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "SANVU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.SANVU.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\SANVU.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\SANVU.txt",
+          "kind": "hourly",
+          "accepted": 26928,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\SANVU.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\SANVU.txt",
+          "kind": "daily",
+          "accepted": 1122,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2005,
+      "name": "TALIM",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2005_TrackData\\2005.TALIM.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2005_Station_hr_man\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_hr_auto\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 26928,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_man\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2005_Station_daily_auto\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 1122,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "BILIS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.BILIS.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\BILIS.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\BILIS.txt",
+          "kind": "hourly",
+          "accepted": 36096,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\BILIS.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\BILIS.txt",
+          "kind": "daily",
+          "accepted": 1504,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "BOPHA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.BOPHA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\BOPHA.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\BOPHA.txt",
+          "kind": "hourly",
+          "accepted": 27072,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\BOPHA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\BOPHA.txt",
+          "kind": "daily",
+          "accepted": 1128,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "CHANCHU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.CHANCHU.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\CHANCHU.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\CHANCHU.txt",
+          "kind": "hourly",
+          "accepted": 27072,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\CHANCHU.txt",
+          "kind": "daily",
+          "accepted": 79,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\CHANCHU.txt",
+          "kind": "daily",
+          "accepted": 1128,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "EWINIAR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.EWINIAR.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\EWINIAR.txt",
+          "kind": "hourly",
+          "accepted": 1872,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\EWINIAR.txt",
+          "kind": "hourly",
+          "accepted": 27072,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\EWINIAR.txt",
+          "kind": "daily",
+          "accepted": 78,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\EWINIAR.txt",
+          "kind": "daily",
+          "accepted": 1128,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "KAEMI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.KAEMI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\KAEMI.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\KAEMI.txt",
+          "kind": "hourly",
+          "accepted": 37344,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\KAEMI.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\KAEMI.txt",
+          "kind": "daily",
+          "accepted": 1504,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "SAOMAI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.SAOMAI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\SAOMAI.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\SAOMAI.txt",
+          "kind": "hourly",
+          "accepted": 18048,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\SAOMAI.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\SAOMAI.txt",
+          "kind": "daily",
+          "accepted": 752,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2006,
+      "name": "SHANSHAN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2006_TrackData\\2006.SHANSHAN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2006_Station_hr_man\\SHANSHAN.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_hr_auto\\SHANSHAN.txt",
+          "kind": "hourly",
+          "accepted": 27072,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_man\\SHANSHAN.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2006_Station_daily_auto\\SHANSHAN.txt",
+          "kind": "daily",
+          "accepted": 1128,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "KROSA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.KROSA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\KROSA.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\KROSA.txt",
+          "kind": "hourly",
+          "accepted": 36288,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\KROSA.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\KROSA.txt",
+          "kind": "daily",
+          "accepted": 1512,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "MITAG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.MITAG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\MITAG.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\MITAG.txt",
+          "kind": "hourly",
+          "accepted": 18144,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\MITAG.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\MITAG.txt",
+          "kind": "daily",
+          "accepted": 756,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "PABUK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.PABUK.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\PABUK.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\PABUK.txt",
+          "kind": "hourly",
+          "accepted": 26712,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\PABUK.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\PABUK.txt",
+          "kind": "daily",
+          "accepted": 1113,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "SEPAT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.SEPAT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\SEPAT.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\SEPAT.txt",
+          "kind": "hourly",
+          "accepted": 35712,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\SEPAT.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\SEPAT.txt",
+          "kind": "daily",
+          "accepted": 1488,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "WIPHA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.WIPHA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\WIPHA.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\WIPHA.txt",
+          "kind": "hourly",
+          "accepted": 8928,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\WIPHA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\WIPHA.txt",
+          "kind": "daily",
+          "accepted": 1116,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2007,
+      "name": "WUTIP",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2007_TrackData\\2007.WUTIP.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2007_Station_hr_man\\WUTIP.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_hr_auto\\WUTIP.txt",
+          "kind": "hourly",
+          "accepted": 17808,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_man\\WUTIP.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2007_Station_daily_auto\\WUTIP.txt",
+          "kind": "daily",
+          "accepted": 742,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "FUNG-WONG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.FUNG-WONG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\FUNG-WONG.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\FUNG-WONG.txt",
+          "kind": "hourly",
+          "accepted": 36864,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\FUNG-WONG.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\FUNG-WONG.txt",
+          "kind": "daily",
+          "accepted": 1536,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "HAGUPIT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.HAGUPIT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\HAGUPIT.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\HAGUPIT.txt",
+          "kind": "hourly",
+          "accepted": 27648,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\HAGUPIT.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\HAGUPIT.txt",
+          "kind": "daily",
+          "accepted": 1152,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "JANGMI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.JANGMI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\JANGMI.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\JANGMI.txt",
+          "kind": "hourly",
+          "accepted": 36864,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\JANGMI.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\JANGMI.txt",
+          "kind": "daily",
+          "accepted": 1536,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "KALMAEGI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.KALMAEGI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\KALMAEGI.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\KALMAEGI.txt",
+          "kind": "hourly",
+          "accepted": 27648,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\KALMAEGI.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\KALMAEGI.txt",
+          "kind": "daily",
+          "accepted": 1152,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "NURI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.NURI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\NURI.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\NURI.txt",
+          "kind": "hourly",
+          "accepted": 27648,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\NURI.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\NURI.txt",
+          "kind": "daily",
+          "accepted": 1152,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2008,
+      "name": "SINLAKU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2008_TrackData\\2008.SINLAKU.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2008_Station_hr_man\\SINLAKU.txt",
+          "kind": "hourly",
+          "accepted": 4320,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_hr_auto\\SINLAKU.txt",
+          "kind": "hourly",
+          "accepted": 55296,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_man\\SINLAKU.txt",
+          "kind": "daily",
+          "accepted": 180,
+          "excluded": 0
+        },
+        {
+          "path": "2008_Station_daily_auto\\SINLAKU.txt",
+          "kind": "daily",
+          "accepted": 2304,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2009,
+      "name": "LINFA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2009_TrackData\\2009.LINFA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2009_Station_hr_man\\LINFA.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_hr_auto\\LINFA.txt",
+          "kind": "hourly",
+          "accepted": 36672,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_man\\LINFA.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_auto\\LINFA.txt",
+          "kind": "daily",
+          "accepted": 1528,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2009,
+      "name": "MOLAVE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2009_TrackData\\2009.MOLAVE.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2009_Station_hr_man\\MOLAVE.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_hr_auto\\MOLAVE.txt",
+          "kind": "hourly",
+          "accepted": 27504,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_man\\MOLAVE.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_auto\\MOLAVE.txt",
+          "kind": "daily",
+          "accepted": 1146,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2009,
+      "name": "MORAKOT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2009_TrackData\\2009.MORAKOT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2009_Station_hr_man\\MORAKOT.txt",
+          "kind": "hourly",
+          "accepted": 4320,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_hr_auto\\MORAKOT.txt",
+          "kind": "hourly",
+          "accepted": 54720,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_man\\MORAKOT.txt",
+          "kind": "daily",
+          "accepted": 180,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_auto\\MORAKOT.txt",
+          "kind": "daily",
+          "accepted": 2280,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2009,
+      "name": "PARMA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2009_TrackData\\2009.PARMA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2009_Station_hr_man\\PARMA.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_hr_auto\\PARMA.txt",
+          "kind": "hourly",
+          "accepted": 36864,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_man\\PARMA.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2009_Station_daily_auto\\PARMA.txt",
+          "kind": "daily",
+          "accepted": 1536,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2010,
+      "name": "FANAPI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2010_TrackData\\2010.FANAPI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2010_Station_hr_man\\FANAPI.txt",
+          "kind": "hourly",
+          "accepted": 2760,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_hr_auto\\FANAPI.txt",
+          "kind": "hourly",
+          "accepted": 37824,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_man\\FANAPI.txt",
+          "kind": "daily",
+          "accepted": 115,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_auto\\FANAPI.txt",
+          "kind": "daily",
+          "accepted": 1576,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2010,
+      "name": "LIONROCK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2010_TrackData\\2010.LIONROCK.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2010_Station_hr_man\\LIONROCK.txt",
+          "kind": "hourly",
+          "accepted": 2088,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_hr_auto\\LIONROCK.txt",
+          "kind": "hourly",
+          "accepted": 28296,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_man\\LIONROCK.txt",
+          "kind": "daily",
+          "accepted": 87,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_auto\\LIONROCK.txt",
+          "kind": "daily",
+          "accepted": 1179,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2010,
+      "name": "MEGI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2010_TrackData\\2010.MEGI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2010_Station_hr_man\\MEGI.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_hr_auto\\MEGI.txt",
+          "kind": "hourly",
+          "accepted": 28224,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_man\\MEGI.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_auto\\MEGI.txt",
+          "kind": "daily",
+          "accepted": 1176,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2010,
+      "name": "MERANTI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2010_TrackData\\2010.MERANTI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2010_Station_hr_man\\MERANTI.txt",
+          "kind": "hourly",
+          "accepted": 1392,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_hr_auto\\MERANTI.txt",
+          "kind": "hourly",
+          "accepted": 18864,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_man\\MERANTI.txt",
+          "kind": "daily",
+          "accepted": 58,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_auto\\MERANTI.txt",
+          "kind": "daily",
+          "accepted": 786,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2010,
+      "name": "NAMTHEUN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2010_TrackData\\2010.NAMTHEUN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2010_Station_hr_man\\NAMTHEUN.txt",
+          "kind": "hourly",
+          "accepted": 1392,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_hr_auto\\NAMTHEUN.txt",
+          "kind": "hourly",
+          "accepted": 18864,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_man\\NAMTHEUN.txt",
+          "kind": "daily",
+          "accepted": 58,
+          "excluded": 0
+        },
+        {
+          "path": "2010_Station_daily_auto\\NAMTHEUN.txt",
+          "kind": "daily",
+          "accepted": 786,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2011,
+      "name": "AERE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2011_TrackData\\2011.AERE.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2011_Station_hr_man\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_hr_auto\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 17592,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_man\\AERE.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_auto\\AERE.txt",
+          "kind": "daily",
+          "accepted": 733,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2011,
+      "name": "MEARI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2011_TrackData\\2011.MEARI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2011_Station_hr_man\\MEARI.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_hr_auto\\MEARI.txt",
+          "kind": "hourly",
+          "accepted": 25488,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_man\\MEARI.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_auto\\MEARI.txt",
+          "kind": "daily",
+          "accepted": 1062,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2011,
+      "name": "MUIFA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2011_TrackData\\2011.MUIFA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2011_Station_hr_man\\MUIFA.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_hr_auto\\MUIFA.txt",
+          "kind": "hourly",
+          "accepted": 24624,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_man\\MUIFA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_auto\\MUIFA.txt",
+          "kind": "daily",
+          "accepted": 1026,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2011,
+      "name": "NANMADOL",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2011_TrackData\\2011.NANMADOL.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2011_Station_hr_man\\NANMADOL.txt",
+          "kind": "hourly",
+          "accepted": 3600,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_hr_auto\\NANMADOL.txt",
+          "kind": "hourly",
+          "accepted": 40200,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_man\\NANMADOL.txt",
+          "kind": "daily",
+          "accepted": 150,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_auto\\NANMADOL.txt",
+          "kind": "daily",
+          "accepted": 1675,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2011,
+      "name": "SONGDA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2011_TrackData\\2011.SONGDA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2011_Station_hr_man\\SONGDA.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_hr_auto\\SONGDA.txt",
+          "kind": "hourly",
+          "accepted": 17328,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_man\\SONGDA.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2011_Station_daily_auto\\SONGDA.txt",
+          "kind": "daily",
+          "accepted": 722,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "DOKSURI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.DOKSURI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\DOKSURI.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\DOKSURI.txt",
+          "kind": "hourly",
+          "accepted": 20784,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\DOKSURI.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\DOKSURI.txt",
+          "kind": "daily",
+          "accepted": 866,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "HAIKUI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.HAIKUI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\HAIKUI.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\HAIKUI.txt",
+          "kind": "hourly",
+          "accepted": 20784,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\HAIKUI.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\HAIKUI.txt",
+          "kind": "daily",
+          "accepted": 866,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "JELAWAT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.JELAWAT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\JELAWAT.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\JELAWAT.txt",
+          "kind": "hourly",
+          "accepted": 20784,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\JELAWAT.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\JELAWAT.txt",
+          "kind": "daily",
+          "accepted": 866,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "KAI-TAK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.KAI-TAK.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\KAI-TAK.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\KAI-TAK.txt",
+          "kind": "hourly",
+          "accepted": 20784,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\KAI-TAK.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\KAI-TAK.txt",
+          "kind": "daily",
+          "accepted": 866,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "SAOLA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.SAOLA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\SAOLA.txt",
+          "kind": "hourly",
+          "accepted": 3600,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\SAOLA.txt",
+          "kind": "hourly",
+          "accepted": 51984,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\SAOLA.txt",
+          "kind": "daily",
+          "accepted": 150,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\SAOLA.txt",
+          "kind": "daily",
+          "accepted": 2166,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "TALIM",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.TALIM.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 31176,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 1299,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2012,
+      "name": "TEMBIN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2012_TrackData\\2012.TEMBIN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2012_Station_hr_man\\TEMBIN.txt",
+          "kind": "hourly",
+          "accepted": 5760,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_hr_auto\\TEMBIN.txt",
+          "kind": "hourly",
+          "accepted": 83136,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_man\\TEMBIN.txt",
+          "kind": "daily",
+          "accepted": 240,
+          "excluded": 0
+        },
+        {
+          "path": "2012_Station_daily_auto\\TEMBIN.txt",
+          "kind": "daily",
+          "accepted": 3464,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "CIMARON",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.CIMARON.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\CIMARON.txt",
+          "kind": "hourly",
+          "accepted": 1488,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\CIMARON.txt",
+          "kind": "hourly",
+          "accepted": 19872,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\CIMARON.txt",
+          "kind": "daily",
+          "accepted": 62,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\CIMARON.txt",
+          "kind": "daily",
+          "accepted": 828,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "FITOW",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.FITOW.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\FITOW.txt",
+          "kind": "hourly",
+          "accepted": 2976,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\FITOW.txt",
+          "kind": "hourly",
+          "accepted": 40728,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\FITOW.txt",
+          "kind": "daily",
+          "accepted": 124,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\FITOW.txt",
+          "kind": "daily",
+          "accepted": 1697,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "KONG-REY",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.KONG-REY.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\KONG-REY.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\KONG-REY.txt",
+          "kind": "hourly",
+          "accepted": 32040,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\KONG-REY.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\KONG-REY.txt",
+          "kind": "daily",
+          "accepted": 1335,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "SOULIK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.SOULIK.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\SOULIK.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\SOULIK.txt",
+          "kind": "hourly",
+          "accepted": 29880,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\SOULIK.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\SOULIK.txt",
+          "kind": "daily",
+          "accepted": 1245,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "TRAMI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.TRAMI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\TRAMI.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\TRAMI.txt",
+          "kind": "hourly",
+          "accepted": 32112,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\TRAMI.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\TRAMI.txt",
+          "kind": "daily",
+          "accepted": 1338,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2013,
+      "name": "USAGI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2013_TrackData\\2013.USAGI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2013_Station_hr_man\\USAGI.txt",
+          "kind": "hourly",
+          "accepted": 2976,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_hr_auto\\USAGI.txt",
+          "kind": "hourly",
+          "accepted": 41472,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_man\\USAGI.txt",
+          "kind": "daily",
+          "accepted": 124,
+          "excluded": 0
+        },
+        {
+          "path": "2013_Station_daily_auto\\USAGI.txt",
+          "kind": "daily",
+          "accepted": 1728,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2014,
+      "name": "FUNG-WONG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2014_TrackData\\2014.FUNG-WONG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2014_Station_hr_man\\FUNG-WONG.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_hr_auto\\FUNG-WONG.txt",
+          "kind": "hourly",
+          "accepted": 45024,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_man\\FUNG-WONG.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_auto\\FUNG-WONG.txt",
+          "kind": "daily",
+          "accepted": 1876,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2014,
+      "name": "HAGIBIS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2014_TrackData\\2014.HAGIBIS.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2014_Station_hr_man\\HAGIBIS.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_hr_auto\\HAGIBIS.txt",
+          "kind": "hourly",
+          "accepted": 22512,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_man\\HAGIBIS.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_auto\\HAGIBIS.txt",
+          "kind": "daily",
+          "accepted": 938,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2014,
+      "name": "MATMO",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2014_TrackData\\2014.MATMO.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2014_Station_hr_man\\MATMO.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_hr_auto\\MATMO.txt",
+          "kind": "hourly",
+          "accepted": 33768,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_man\\MATMO.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2014_Station_daily_auto\\MATMO.txt",
+          "kind": "daily",
+          "accepted": 1407,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "CHAN-HOM",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.CHAN-HOM.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\CHAN-HOM.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_hr_auto\\CHAN-HOM.txt",
+          "kind": "hourly",
+          "accepted": 32760,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\CHAN-HOM.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\CHAN-HOM.txt",
+          "kind": "daily",
+          "accepted": 1365,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "DUJUAN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.DUJUAN.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\DUJUAN.txt",
+          "kind": "hourly",
+          "accepted": 2136,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_hr_auto\\DUJUAN.txt",
+          "kind": "hourly",
+          "accepted": 30816,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\DUJUAN.txt",
+          "kind": "daily",
+          "accepted": 89,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\DUJUAN.txt",
+          "kind": "daily",
+          "accepted": 1284,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "GONI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.GONI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\GONI.txt",
+          "kind": "hourly",
+          "accepted": 2856,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_hr_auto\\GONI.txt",
+          "kind": "hourly",
+          "accepted": 41376,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\GONI.txt",
+          "kind": "daily",
+          "accepted": 119,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\GONI.txt",
+          "kind": "daily",
+          "accepted": 1724,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "LINFA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.LINFA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\LINFA.txt",
+          "kind": "hourly",
+          "accepted": 2136,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\LINFA.txt",
+          "kind": "daily",
+          "accepted": 89,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\LINFA.txt",
+          "kind": "daily",
+          "accepted": 0,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "NOUL",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.NOUL.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\NOUL.txt",
+          "kind": "hourly",
+          "accepted": 1392,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_hr_auto\\NOUL.txt",
+          "kind": "hourly",
+          "accepted": 22080,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\NOUL.txt",
+          "kind": "daily",
+          "accepted": 58,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\NOUL.txt",
+          "kind": "daily",
+          "accepted": 920,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2015,
+      "name": "SOUDELOR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2015_TrackData\\2015.SOUDELOR.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2015_Station_hr_man\\SOUDELOR.txt",
+          "kind": "hourly",
+          "accepted": 2712,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_hr_auto\\SOUDELOR.txt",
+          "kind": "hourly",
+          "accepted": 41472,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_man\\SOUDELOR.txt",
+          "kind": "daily",
+          "accepted": 113,
+          "excluded": 0
+        },
+        {
+          "path": "2015_Station_daily_auto\\SOUDELOR.txt",
+          "kind": "daily",
+          "accepted": 1728,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2016,
+      "name": "AERE",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2016_TrackData\\2016.AERE.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2016_Station_hr_man\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_hr_auto\\AERE.txt",
+          "kind": "hourly",
+          "accepted": 24192,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_man\\AERE.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_auto\\AERE.txt",
+          "kind": "daily",
+          "accepted": 1008,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2016,
+      "name": "MALAKAS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2016_TrackData\\2016.MALAKAS.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2016_Station_hr_man\\MALAKAS.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_hr_auto\\MALAKAS.txt",
+          "kind": "hourly",
+          "accepted": 48000,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_man\\MALAKAS.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_auto\\MALAKAS.txt",
+          "kind": "daily",
+          "accepted": 2000,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2016,
+      "name": "MEGI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2016_TrackData\\2016.MEGI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2016_Station_hr_man\\MEGI.txt",
+          "kind": "hourly",
+          "accepted": 2880,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_hr_auto\\MEGI.txt",
+          "kind": "hourly",
+          "accepted": 48096,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_man\\MEGI.txt",
+          "kind": "daily",
+          "accepted": 120,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_auto\\MEGI.txt",
+          "kind": "daily",
+          "accepted": 2004,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2016,
+      "name": "MERANTI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2016_TrackData\\2016.MERANTI.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2016_Station_hr_man\\MERANTI.txt",
+          "kind": "hourly",
+          "accepted": 2784,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_hr_auto\\MERANTI.txt",
+          "kind": "hourly",
+          "accepted": 48000,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_man\\MERANTI.txt",
+          "kind": "daily",
+          "accepted": 116,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_auto\\MERANTI.txt",
+          "kind": "daily",
+          "accepted": 2000,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2016,
+      "name": "NEPARTAK",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2016_TrackData\\2016.NEPARTAK.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2016_Station_hr_man\\NEPARTAK.txt",
+          "kind": "hourly",
+          "accepted": 2832,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_hr_auto\\NEPARTAK.txt",
+          "kind": "hourly",
+          "accepted": 47808,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_man\\NEPARTAK.txt",
+          "kind": "daily",
+          "accepted": 118,
+          "excluded": 0
+        },
+        {
+          "path": "2016_Station_daily_auto\\NEPARTAK.txt",
+          "kind": "daily",
+          "accepted": 1992,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2017,
+      "name": "GUCHOL",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2017_TrackData\\2017.GUCHOL.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2017_Station_hr_man\\GUCHOL.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_hr_auto\\GUCHOL.txt",
+          "kind": "hourly",
+          "accepted": 24026,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_man\\GUCHOL.txt",
+          "kind": "daily",
+          "accepted": 30,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_auto\\GUCHOL.txt",
+          "kind": "daily",
+          "accepted": 501,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2017,
+      "name": "HAITANG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2017_TrackData\\2017.HAITANG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2017_Station_hr_man\\HAITANG.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_hr_auto\\HAITANG.txt",
+          "kind": "hourly",
+          "accepted": 24424,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_man\\HAITANG.txt",
+          "kind": "daily",
+          "accepted": 30,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_auto\\HAITANG.txt",
+          "kind": "daily",
+          "accepted": 507,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2017,
+      "name": "HATO",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2017_TrackData\\2017.HATO.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2017_Station_hr_man\\HATO.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_hr_auto\\HATO.txt",
+          "kind": "hourly",
+          "accepted": 36688,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_man\\HATO.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_auto\\HATO.txt",
+          "kind": "daily",
+          "accepted": 1014,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2017,
+      "name": "NESAT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2017_TrackData\\2017.NESAT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2017_Station_hr_man\\NESAT.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_hr_auto\\NESAT.txt",
+          "kind": "hourly",
+          "accepted": 36816,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_man\\NESAT.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_auto\\NESAT.txt",
+          "kind": "daily",
+          "accepted": 1014,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2017,
+      "name": "TALIM",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2017_TrackData\\2017.TALIM.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2017_Station_hr_man\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_hr_auto\\TALIM.txt",
+          "kind": "hourly",
+          "accepted": 36011,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_man\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2017_Station_daily_auto\\TALIM.txt",
+          "kind": "daily",
+          "accepted": 1000,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2018,
+      "name": "MANGKHUT",
+      "warnings": [
+        "2018_Station_hr_man\\MANGKHUT.txt：已隔離 22320 筆超出事件範圍的資料；原始檔未變更。"
+      ],
+      "sources": [
+        {
+          "path": "2018_TrackData\\2018.MANGKHUT.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2018_Station_hr_man\\MANGKHUT.txt",
+          "kind": "hourly",
+          "accepted": 0,
+          "excluded": 22320
+        },
+        {
+          "path": "2018_Station_hr_auto\\MANGKHUT.txt",
+          "kind": "hourly",
+          "accepted": 23804,
+          "excluded": 0
+        },
+        {
+          "path": "2018_Station_daily_man\\MANGKHUT.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2018_Station_daily_auto\\MANGKHUT.txt",
+          "kind": "daily",
+          "accepted": 1082,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 22320,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2018,
+      "name": "MARIA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2018_TrackData\\2018.MARIA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2018_Station_hr_man\\MARIA.txt",
+          "kind": "hourly",
+          "accepted": 1860,
+          "excluded": 0
+        },
+        {
+          "path": "2018_Station_hr_auto\\MARIA.txt",
+          "kind": "hourly",
+          "accepted": 33542,
+          "excluded": 0
+        },
+        {
+          "path": "2018_Station_daily_man\\MARIA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2018_Station_daily_auto\\MARIA.txt",
+          "kind": "daily",
+          "accepted": 1623,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2019,
+      "name": "BAILU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2019_TrackData\\2019.BAILU.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2019_Station_hr_man\\BAILU.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_hr_auto\\BAILU.txt",
+          "kind": "hourly",
+          "accepted": 39024,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_man\\BAILU.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_auto\\BAILU.txt",
+          "kind": "daily",
+          "accepted": 1626,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2019,
+      "name": "DANAS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2019_TrackData\\2019.DANAS.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2019_Station_hr_man\\DANAS.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_hr_auto\\DANAS.txt",
+          "kind": "hourly",
+          "accepted": 39384,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_man\\DANAS.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_auto\\DANAS.txt",
+          "kind": "daily",
+          "accepted": 1641,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2019,
+      "name": "LEKIMA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2019_TrackData\\2019.LEKIMA.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2019_Station_hr_auto\\LEKIMA.txt",
+          "kind": "hourly",
+          "accepted": 52440,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_man\\LEKIMA.txt",
+          "kind": "daily",
+          "accepted": 0,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_auto\\LEKIMA.txt",
+          "kind": "daily",
+          "accepted": 2185,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2019,
+      "name": "MITAG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2019_TrackData\\2019.MITAG.Track.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2019_Station_hr_man\\MITAG.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_hr_auto\\MITAG.txt",
+          "kind": "hourly",
+          "accepted": 38424,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_man\\MITAG.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2019_Station_daily_auto\\MITAG.txt",
+          "kind": "daily",
+          "accepted": 1596,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2020,
+      "name": "ATSANI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2020_TrackData\\2020.ATSANI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2020_Station_hr_man\\ATSANI.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_hr_auto\\ATSANI.txt",
+          "kind": "hourly",
+          "accepted": 41040,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_man\\ATSANI.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_auto\\ATSANI.txt",
+          "kind": "daily",
+          "accepted": 1710,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2020,
+      "name": "BAVI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2020_TrackData\\2020.BAVI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2020_Station_hr_man\\BAVI.txt",
+          "kind": "hourly",
+          "accepted": 744,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_hr_auto\\BAVI.txt",
+          "kind": "hourly",
+          "accepted": 13704,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_man\\BAVI.txt",
+          "kind": "daily",
+          "accepted": 31,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_auto\\BAVI.txt",
+          "kind": "daily",
+          "accepted": 571,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2020,
+      "name": "HAGUPIT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2020_TrackData\\2020.HAGUPIT.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2020_Station_hr_man\\HAGUPIT.txt",
+          "kind": "hourly",
+          "accepted": 1488,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_hr_auto\\HAGUPIT.txt",
+          "kind": "hourly",
+          "accepted": 27408,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_man\\HAGUPIT.txt",
+          "kind": "daily",
+          "accepted": 62,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_auto\\HAGUPIT.txt",
+          "kind": "daily",
+          "accepted": 1142,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2020,
+      "name": "MEKKHALA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2020_TrackData\\2020.MEKKHALA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2020_Station_hr_man\\MEKKHALA.txt",
+          "kind": "hourly",
+          "accepted": 1488,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_hr_auto\\MEKKHALA.txt",
+          "kind": "hourly",
+          "accepted": 27408,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_man\\MEKKHALA.txt",
+          "kind": "daily",
+          "accepted": 62,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_auto\\MEKKHALA.txt",
+          "kind": "daily",
+          "accepted": 1142,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2020,
+      "name": "VONGFONG",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2020_TrackData\\2020.VONGFONG.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2020_Station_hr_man\\VONGFONG.txt",
+          "kind": "hourly",
+          "accepted": 1488,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_hr_auto\\VONGFONG.txt",
+          "kind": "hourly",
+          "accepted": 27408,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_man\\VONGFONG.txt",
+          "kind": "daily",
+          "accepted": 62,
+          "excluded": 0
+        },
+        {
+          "path": "2020_Station_daily_auto\\VONGFONG.txt",
+          "kind": "daily",
+          "accepted": 1142,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2021,
+      "name": "CHANTHU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2021_TrackData\\2021.CHANTHU.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2021_Station_hr_man\\CHANTHU.txt",
+          "kind": "hourly",
+          "accepted": 2976,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_hr_auto\\CHANTHU.txt",
+          "kind": "hourly",
+          "accepted": 55296,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_man\\CHANTHU.txt",
+          "kind": "daily",
+          "accepted": 124,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_auto\\CHANTHU.txt",
+          "kind": "daily",
+          "accepted": 2304,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2021,
+      "name": "CHOI-WAN",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2021_TrackData\\2021.CHOI-WAN.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2021_Station_hr_man\\CHOI-WAN.txt",
+          "kind": "hourly",
+          "accepted": 1440,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_hr_auto\\CHOI-WAN.txt",
+          "kind": "hourly",
+          "accepted": 27648,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_man\\CHOI-WAN.txt",
+          "kind": "daily",
+          "accepted": 60,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_auto\\CHOI-WAN.txt",
+          "kind": "daily",
+          "accepted": 1152,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2021,
+      "name": "IN-FA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2021_TrackData\\2021.IN-FA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2021_Station_hr_man\\IN-FA.txt",
+          "kind": "hourly",
+          "accepted": 2976,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_hr_auto\\IN-FA.txt",
+          "kind": "hourly",
+          "accepted": 55296,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_man\\IN-FA.txt",
+          "kind": "daily",
+          "accepted": 124,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_auto\\IN-FA.txt",
+          "kind": "daily",
+          "accepted": 2304,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2021,
+      "name": "KOMPASU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2021_TrackData\\2021.KOMPASU.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2021_Station_hr_man\\KOMPASU.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_hr_auto\\KOMPASU.txt",
+          "kind": "hourly",
+          "accepted": 41472,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_man\\KOMPASU.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_auto\\KOMPASU.txt",
+          "kind": "daily",
+          "accepted": 1728,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2021,
+      "name": "LUPIT",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2021_TrackData\\2021.LUPIT.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2021_Station_hr_man\\LUPIT.txt",
+          "kind": "hourly",
+          "accepted": 1488,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_hr_auto\\LUPIT.txt",
+          "kind": "hourly",
+          "accepted": 27648,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_man\\LUPIT.txt",
+          "kind": "daily",
+          "accepted": 62,
+          "excluded": 0
+        },
+        {
+          "path": "2021_Station_daily_auto\\LUPIT.txt",
+          "kind": "daily",
+          "accepted": 1152,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2022,
+      "name": "HINNAMNOR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2022_TrackData\\2022.HINNAMNOR.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2022_Station_hr_man\\HINNAMNOR.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_hr_auto\\HINNAMNOR.txt",
+          "kind": "hourly",
+          "accepted": 43056,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_daily_man\\HINNAMNOR.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_daily_auto\\HINNAMNOR.txt",
+          "kind": "daily",
+          "accepted": 1794,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2022,
+      "name": "MUIFA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2022_TrackData\\2022.MUIFA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2022_Station_hr_man\\MUIFA.txt",
+          "kind": "hourly",
+          "accepted": 2160,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_hr_auto\\MUIFA.txt",
+          "kind": "hourly",
+          "accepted": 43056,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_daily_man\\MUIFA.txt",
+          "kind": "daily",
+          "accepted": 90,
+          "excluded": 0
+        },
+        {
+          "path": "2022_Station_daily_auto\\MUIFA.txt",
+          "kind": "daily",
+          "accepted": 1794,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2023,
+      "name": "DOKSURI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2023_TrackData\\2023.DOKSURI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2023_Station_hr_man\\DOKSURI.txt",
+          "kind": "hourly",
+          "accepted": 3480,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_hr_auto\\DOKSURI.txt",
+          "kind": "hourly",
+          "accepted": 76136,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_man\\DOKSURI.txt",
+          "kind": "daily",
+          "accepted": 145,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_auto\\DOKSURI.txt",
+          "kind": "daily",
+          "accepted": 3173,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2023,
+      "name": "KOINU",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2023_TrackData\\2023.KOINU.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2023_Station_hr_man\\KOINU.txt",
+          "kind": "hourly",
+          "accepted": 3480,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_hr_auto\\KOINU.txt",
+          "kind": "hourly",
+          "accepted": 76200,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_man\\KOINU.txt",
+          "kind": "daily",
+          "accepted": 145,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_auto\\KOINU.txt",
+          "kind": "daily",
+          "accepted": 3175,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2023,
+      "name": "MAWAR",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2023_TrackData\\2023.MAWAR.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2023_Station_hr_man\\MAWAR.txt",
+          "kind": "hourly",
+          "accepted": 2088,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_hr_auto\\MAWAR.txt",
+          "kind": "hourly",
+          "accepted": 45792,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_man\\MAWAR.txt",
+          "kind": "daily",
+          "accepted": 87,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_auto\\MAWAR.txt",
+          "kind": "daily",
+          "accepted": 1908,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2023,
+      "name": "SAOLA",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2023_TrackData\\2023.SAOLA.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2023_Station_hr_man\\SAOLA.txt",
+          "kind": "hourly",
+          "accepted": 2784,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_hr_auto\\SAOLA.txt",
+          "kind": "hourly",
+          "accepted": 60960,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_man\\SAOLA.txt",
+          "kind": "daily",
+          "accepted": 116,
+          "excluded": 0
+        },
+        {
+          "path": "2023_Station_daily_auto\\SAOLA.txt",
+          "kind": "daily",
+          "accepted": 2540,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2024,
+      "name": "GAEMI",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2024_TrackData\\2024.GAEMI.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2024_Station_hr_man\\GAEMI.txt",
+          "kind": "hourly",
+          "accepted": 3600,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_hr_auto\\GAEMI.txt",
+          "kind": "hourly",
+          "accepted": 73440,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_man\\GAEMI.txt",
+          "kind": "daily",
+          "accepted": 150,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_auto\\GAEMI.txt",
+          "kind": "daily",
+          "accepted": 3060,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2024,
+      "name": "KONG-REY",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2024_TrackData\\2024.KONG-REY.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2024_Station_hr_man\\KONG-REY.txt",
+          "kind": "hourly",
+          "accepted": 2976,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_hr_auto\\KONG-REY.txt",
+          "kind": "hourly",
+          "accepted": 58752,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_man\\KONG-REY.txt",
+          "kind": "daily",
+          "accepted": 124,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_auto\\KONG-REY.txt",
+          "kind": "daily",
+          "accepted": 2448,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2024,
+      "name": "KRATHON",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2024_TrackData\\2024.KRATHON.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2024_Station_hr_man\\KRATHON.txt",
+          "kind": "hourly",
+          "accepted": 4464,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_hr_auto\\KRATHON.txt",
+          "kind": "hourly",
+          "accepted": 88128,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_man\\KRATHON.txt",
+          "kind": "daily",
+          "accepted": 186,
+          "excluded": 0
+        },
+        {
+          "path": "2024_Station_daily_auto\\KRATHON.txt",
+          "kind": "daily",
+          "accepted": 3672,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2025,
+      "name": "DANAS",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2025_TrackData\\2025.DANAS.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2025_Station_hr_man\\DANAS.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_hr_auto\\DANAS.txt",
+          "kind": "hourly",
+          "accepted": 47654,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_daily_man\\DANAS.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_daily_auto\\DANAS.txt",
+          "kind": "daily",
+          "accepted": 1986,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    },
+    {
+      "year": 2025,
+      "name": "PODUL",
+      "warnings": [],
+      "sources": [
+        {
+          "path": "2025_TrackData\\2025.PODUL.TrackBEST.txt",
+          "kind": "track"
+        },
+        {
+          "path": "2025_Station_hr_man\\PODUL.txt",
+          "kind": "hourly",
+          "accepted": 2232,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_hr_auto\\PODUL.txt",
+          "kind": "hourly",
+          "accepted": 47664,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_daily_man\\PODUL.txt",
+          "kind": "daily",
+          "accepted": 93,
+          "excluded": 0
+        },
+        {
+          "path": "2025_Station_daily_auto\\PODUL.txt",
+          "kind": "daily",
+          "accepted": 1986,
+          "excluded": 0
+        }
+      ],
+      "excludedRows": 0,
+      "parseErrors": 0,
+      "datePolicy": "路徑首末時刻前後各48小時；原始檔保留"
+    }
+  ],
+  "unavailable": [
+    {
+      "year": 2022,
+      "name": "NESAT",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2023,
+      "name": "HAIKUI",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2023,
+      "name": "KHANUN",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2024,
+      "name": "USAGI",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2025,
+      "name": "FUNG-WONG",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2025,
+      "name": "RAGASA",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    },
+    {
+      "year": 2025,
+      "name": "WIPHA",
+      "reason": "有測站資料，但沒有對應颱風路徑"
+    }
+  ]
+}
